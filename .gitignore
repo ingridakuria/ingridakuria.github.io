@@ -1,0 +1,9 @@
+# Local Claude Code tooling — not part of the website
+.claude/
+
+# OS / editor noise
+Thumbs.db
+.DS_Store
+
+# Node (not used by the site, but just in case)
+node_modules/

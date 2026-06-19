@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingrida Kuria — Skaitmeninė buvimas mažam verslui</title>
+  <meta name="description" content="AI pagalba kuriu svetaines mažam verslui. Greičiau. Pigiau. Žmogiškai. Vilnius, Lietuva." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F5;
+      --beige: #EDE8DF;
+      --charcoal: #1C1C1C;
+      --charcoal-light: #4A4A4A;
+      --lavender: #B8A9C9;
+      --lavender-deep: #8B7BA8;
+      --lavender-pale: #E8E2F0;
+      --white: #FFFFFF;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(250, 248, 245, 0.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--charcoal-light);
+      text-decoration: none;
+      position: relative;
+      transition: color var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--lavender-deep);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .burger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--charcoal);
+      transition: var(--transition);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4vw 4rem;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-letter {
+      position: absolute;
+      right: -2vw;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(18rem, 30vw, 42rem);
+      font-weight: 700;
+      color: var(--lavender-pale);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--lavender-deep);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2rem; height: 1px;
+      background: var(--lavender-deep);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 7rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--lavender-deep);
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: var(--charcoal-light);
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.4rem;
+      background: var(--lavender);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn:hover { background: var(--lavender-deep); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1px solid var(--lavender);
+    }
+    .btn-outline:hover { background: var(--lavender-pale); color: var(--lavender-deep); transform: translateY(-2px); }
+
+    .hero-image {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-photo-wrap {
+      width: clamp(260px, 35vw, 440px);
+      aspect-ratio: 3/4;
+      position: relative;
+    }
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--beige);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--lavender-deep);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+    .hero-photo-placeholder svg {
+      width: 48px; height: 48px;
+      opacity: 0.4;
+    }
+    .hero-photo-wrap img,
+    .apie-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-photo-wrap img { aspect-ratio: 3/4; }
+    .hero-photo-deco {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 70%;
+      height: 70%;
+      border: 1.5px solid var(--lavender);
+      z-index: -1;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--charcoal-light);
+      opacity: 0.6;
+      z-index: 1;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 3rem;
+      background: linear-gradient(to bottom, var(--lavender), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(0.7); }
+    }
+
+    /* ── SECTIONS BASE ── */
+    section { padding: 7rem 4vw; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--lavender-deep);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 1.5rem; height: 1px;
+      background: var(--lavender-deep);
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    h2 em { font-style: italic; color: var(--lavender-deep); }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+
+    /* ── PROBLEM / SOLUTION ── */
+    #problema {
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+    .problema-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .problema-left h2 { color: var(--cream); }
+    .problema-left h2 em { color: var(--lavender); }
+    .pain-list {
+      list-style: none;
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .pain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(250,248,245,0.8);
+    }
+    .pain-list li::before {
+      content: '—';
+      color: var(--lavender);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .problema-right {
+      padding-top: 5rem;
+    }
+    .problema-right .section-label { color: var(--lavender); }
+    .problema-right .section-label::before { background: var(--lavender); }
+    .sprendimas-text {
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      color: rgba(250,248,245,0.85);
+      margin-top: 1.5rem;
+      line-height: 1.8;
+    }
+    .sprendimas-text strong {
+      color: var(--lavender);
+      font-weight: 500;
+    }
+    .sprendimas-highlight {
+      margin-top: 2.5rem;
+      padding: 1.5rem 2rem;
+      border-left: 2px solid var(--lavender);
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.4;
+    }
+
+    /* ── SERVICES ── */
+    #paslaugos { background: var(--cream); }
+    .paslaugos-header {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .paslaugos-intro {
+      max-width: 420px;
+      color: var(--charcoal-light);
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    .services-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--beige);
+      position: relative;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--lavender);
+      transition: width var(--transition);
+    }
+    .service-card:hover {
+      border-color: var(--lavender-pale);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(184,169,201,0.15);
+    }
+    .service-card:hover::after { width: 100%; }
+    .service-card.coming-soon {
+      opacity: 0.55;
+    }
+    .service-card.coming-soon:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .service-icon {
+      width: 44px; height: 44px;
+      margin-bottom: 1.5rem;
+      color: var(--lavender-deep);
+    }
+    .service-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--lavender-deep);
+      background: var(--lavender-pale);
+      padding: 0.2rem 0.7rem;
+      margin-bottom: 1rem;
+    }
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--charcoal-light);
+      line-height: 1.65;
+    }
+
+    /* ── PORTFOLIO ── */
+    #portfelis { background: var(--beige); }
+    .portfelis-header {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+    }
+    .portfolio-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .portfolio-card {
+      aspect-ratio: 4/5;
+      background: var(--lavender-pale);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--lavender-deep);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition);
+    }
+    .portfolio-card:hover { transform: scale(1.015); }
+    .portfolio-card-num {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 300;
+      opacity: 0.15;
+      position: absolute;
+      top: 1rem; left: 1.5rem;
+      line-height: 1;
+    }
+    .portfolio-card-label {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.3rem;
+    }
+    .portfolio-card-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* ── ABOUT ── */
+    #apie { background: var(--cream); }
+    .apie-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .apie-photo-wrap {
+      position: relative;
+    }
+    .apie-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--lavender-deep);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1rem;
+    }
+    .apie-photo svg { opacity: 0.35; }
+    .apie-photo-deco-1 {
+      position: absolute;
+      top: -1.2rem; right: -1.2rem;
+      width: 55%;
+      height: 45%;
+      border: 1.5px solid var(--lavender);
+      z-index: -1;
+    }
+    .apie-text { padding-top: 1rem; }
+    .apie-text h2 { margin-bottom: 2rem; }
+    .apie-bio {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--charcoal-light);
+    }
+    .apie-values {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .value-pill {
+      padding: 0.4rem 1.1rem;
+      border: 1px solid var(--lavender);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--lavender-deep);
+      font-weight: 400;
+    }
+    .apie-quote {
+      margin-top: 2.5rem;
+      padding: 1.5rem 2rem;
+      background: var(--lavender-pale);
+      border-left: 2px solid var(--lavender-deep);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: var(--lavender-deep);
+    }
+
+    /* ── CONTACT ── */
+    #kontaktai { background: var(--charcoal); color: var(--cream); }
+    .kontaktai-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .kontaktai-inner .section-label { justify-content: center; color: var(--lavender); }
+    .kontaktai-inner .section-label::before { background: var(--lavender); }
+    .kontaktai-inner h2 { color: var(--cream); margin-bottom: 1rem; }
+    .kontaktai-inner h2 em { color: var(--lavender); }
+    .kontaktai-sub {
+      color: rgba(250,248,245,0.65);
+      font-size: 0.95rem;
+      margin-bottom: 3rem;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      text-align: left;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250,248,245,0.5);
+    }
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(184,169,201,0.3);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      padding: 0.9rem 1.1rem;
+      outline: none;
+      transition: border-color var(--transition);
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--lavender);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(250,248,245,0.25);
+    }
+    .form-submit {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    .btn-light {
+      background: var(--lavender);
+      color: var(--white);
+    }
+    .btn-light:hover { background: var(--lavender-deep); }
+    .contact-email-alt {
+      margin-top: 2rem;
+      font-size: 0.82rem;
+      color: rgba(250,248,245,0.4);
+    }
+    .contact-email-alt a {
+      color: var(--lavender);
+      text-decoration: none;
+    }
+    .contact-email-alt a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111111;
+      color: rgba(250,248,245,0.4);
+      padding: 2.5rem 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.8rem;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,248,245,0.7);
+      text-decoration: none;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 1.2rem;
+    }
+    .footer-socials a {
+      color: rgba(250,248,245,0.4);
+      text-decoration: none;
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+    }
+    .footer-socials a:hover { color: var(--lavender); }
+    .footer-socials svg { width: 18px; height: 18px; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; padding-top: 7rem; gap: 3rem; }
+      .hero-bg-letter { display: none; }
+      .hero-image { order: -1; }
+      .hero-photo-wrap { width: min(280px, 80vw); }
+      .hero-text { text-align: center; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-tagline { margin: 0 auto 2.5rem; }
+      .problema-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .problema-right { padding-top: 0; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .apie-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .paslaugos-header { flex-direction: column; align-items: flex-start; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 5rem 5vw; }
+      nav { padding: 1.2rem 5vw; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--cream);
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 99;
+      }
+      .nav-links.open a { font-size: 1.1rem; letter-spacing: 0.15em; }
+      .burger { display: flex; z-index: 101; }
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Ingrida Kuria</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#paslaugos" onclick="closeMenu()">Paslaugos</a></li>
+      <li><a href="#portfelis" onclick="closeMenu()">Portfelis</a></li>
+      <li><a href="#apie" onclick="closeMenu()">Apie</a></li>
+      <li><a href="#kontaktai" onclick="closeMenu()">Kontaktai</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Meniu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-letter" aria-hidden="true">K</div>
+
+    <div class="hero-text fade-in">
+      <p class="hero-eyebrow">Vilnius · Lietuva</p>
+      <h1>Tavo verslas,<br /><em>matomas</em><br />pasauliui.</h1>
+      <p class="hero-tagline">Kuriu svetaines mažam verslui — greičiau, pigiau ir žmogiškai. Su dirbtinio intelekto pagalba.</p>
+      <a href="#kontaktai" class="btn">Susisiekime</a>
+    </div>
+
+    <div class="hero-image fade-in fade-in-delay-2">
+      <div class="hero-photo-wrap">
+        <img src="images/DSC08460.jpg" alt="Ingrida Kuria" style="object-position: 60% center;" />
+        <div class="hero-photo-deco" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      <span>Slinkti</span>
+    </div>
+  </section>
+
+  <!-- PROBLEM / SOLUTION -->
+  <section id="problema">
+    <div class="problema-grid">
+      <div class="problema-left fade-in">
+        <p class="section-label" style="color:var(--lavender);--tw-before-bg:var(--lavender)">Pažįstama?</p>
+        <h2>Mažas verslas.<br /><em>Didelės</em> kliūtys.</h2>
+        <ul class="pain-list">
+          <li>Laiko nėra — viską darai pats vienas.</li>
+          <li>Svetainė brangi ir lėtai kuriama.</li>
+          <li>Socialinis tinklas veikia, bet to per maža.</li>
+          <li>Konkurentai matomi — tu ne.</li>
+        </ul>
+      </div>
+      <div class="problema-right fade-in fade-in-delay-2">
+        <p class="section-label">Sprendimas</p>
+        <h2 style="color:var(--cream)">Kitoks<br /><em>kelias.</em></h2>
+        <p class="sprendimas-text">
+          Su <strong>dirbtinio intelekto pagalba</strong> galiu sukurti profesionalią svetainę greičiau ir pigiau nei tradiciniai metodai. Tai reiškia, kad tu gali sutaupyti tiek laiko, tiek pinigų — ir vis tiek gauti kokybę.
+          <br /><br />
+          Esu maža verslininkė pati, todėl žinau, kaip svarbu kiekvienas litas ir kiekviena valanda.
+        </p>
+        <blockquote class="sprendimas-highlight">
+          „Tavo verslas nusipelno būti matomas — nesvarbu, koks jo dydis."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="paslaugos">
+    <div class="paslaugos-header fade-in">
+      <div>
+        <p class="section-label">Paslaugos</p>
+        <h2>Ką <em>kuriu</em><br />tau.</h2>
+      </div>
+      <p class="paslaugos-intro">Pradedame nuo svetainės — nes tai pamatas. Likusios paslaugos ateina netrukus.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+        </svg>
+        <div class="service-title">Svetainių kūrimas</div>
+        <p class="service-desc">Moderni, greita ir mobiliems pritaikyta svetainė. Nuo dizaino iki paleidimo — be galvos skausmo.</p>
+      </div>
+
+      <div class="service-card coming-soon fade-in fade-in-delay-1">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M15 10l-4 4-4-4"/><path d="M12 14V3"/><rect x="3" y="17" width="18" height="4" rx="1"/>
+        </svg>
+        <div class="service-badge">Netrukus</div>
+        <div class="service-title">Turinio kūrimas</div>
+        <p class="service-desc">UGC turinys, tekstai ir vizualai, kurie kalba tavo klientų kalba.</p>
+      </div>
+
+      <div class="service-card coming-soon fade-in fade-in-delay-2">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/>
+        </svg>
+        <div class="service-badge">Netrukus</div>
+        <div class="service-title">Skaitmeninė strategija</div>
+        <p class="service-desc">Aiški veiksmų plano, kaip tavo verslas auga skaitmeninėje erdvėje.</p>
+      </div>
+
+      <div class="service-card coming-soon fade-in fade-in-delay-3">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+        </svg>
+        <div class="service-badge">Netrukus</div>
+        <div class="service-title">Prekės ženklo tapatybė</div>
+        <p class="service-desc">Logotipas, spalvos ir stilius, kuris atstovauja tave ir tavo verslą.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfelis">
+    <div class="portfelis-header fade-in">
+      <p class="section-label">Portfelis</p>
+      <h2>Darbai, kurie<br /><em>kalba</em> už save.</h2>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card fade-in">
+        <span class="portfolio-card-num">01</span>
+        <div class="portfolio-card-label">Netrukus</div>
+        <div class="portfolio-card-sub">Pirmas projektas</div>
+      </div>
+      <div class="portfolio-card fade-in fade-in-delay-1">
+        <span class="portfolio-card-num">02</span>
+        <div class="portfolio-card-label">Netrukus</div>
+        <div class="portfolio-card-sub">Antras projektas</div>
+      </div>
+      <div class="portfolio-card fade-in fade-in-delay-2">
+        <span class="portfolio-card-num">03</span>
+        <div class="portfolio-card-label">Netrukus</div>
+        <div class="portfolio-card-sub">Trečias projektas</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="apie">
+    <div class="apie-grid">
+      <div class="apie-photo-wrap fade-in">
+        <div class="apie-photo">
+          <img src="images/DSC08495.jpg" alt="Ingrida Kuria prie lango" style="object-position: 55% center;" />
+        </div>
+        <div class="apie-photo-deco-1" aria-hidden="true"></div>
+      </div>
+
+      <div class="apie-text fade-in fade-in-delay-2">
+        <p class="section-label">Apie mane</p>
+        <h2>Sveika, aš —<br /><em>Ingrida.</em></h2>
+        <p class="apie-bio">
+          Esu visą gyvenimą besimokanti kūrėja su verslo vadybos ir multimedijų dizaino išsilavinimu. Po stipraus perdegimo pradėjau laisvai samdomo specialisto kelią — ir jis išmokė mane, ką reiškia būti vienu žmogumi visam verslui. Darbas lietuviškų ūkininkų krautuvėje „Savam kieme" grąžino man pasitikėjimą savimi ir parodė, kaip svarbu mažam verslui būti matamam. Dabar dirbtinis intelektas eina koja kojon su manimi — ir tai leidžia man kurti greitai, kokybiškai ir prieinamai.
+        </p>
+        <div class="apie-values">
+          <span class="value-pill">Kūrybiškumas</span>
+          <span class="value-pill">Sąmoningumas</span>
+          <span class="value-pill">Tikrumas</span>
+          <span class="value-pill">Augimas</span>
+        </div>
+        <blockquote class="apie-quote">
+          „Noriu, kad kiekvienas mažas verslas jaustųsi palaikomas ir matomas."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontaktai">
+    <div class="kontaktai-inner">
+      <p class="section-label">Kontaktai</p>
+      <h2>Pradėkime<br /><em>pokalbį.</em></h2>
+      <p class="kontaktai-sub">Nesvarbu, ar žinai, ko nori — aš padėsiu išsiaiškinti. Parašyk ir per 48 val. susisieksiu.</p>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vardas">Vardas</label>
+            <input type="text" id="vardas" name="vardas" placeholder="Tavo vardas" required />
+          </div>
+          <div class="form-group">
+            <label for="el-pastas">El. paštas</label>
+            <input type="email" id="el-pastas" name="email" placeholder="tavo@pastas.lt" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="zinute">Žinutė</label>
+          <textarea id="zinute" name="zinute" rows="5" placeholder="Papasakok apie savo verslą ir ko norėtum..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-light">Siųsti žinutę</button>
+        </div>
+      </form>
+
+      <p class="contact-email-alt">Arba rašyk tiesiai: <a href="mailto:ingridakuria@gmail.com">ingridakuria@gmail.com</a></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo">Ingrida Kuria</a>
+    <span>© 2026 · Matomas verslas. Žmogiškas požiūris.</span>
+    <div class="footer-socials">
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="#" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="3"/>
+          <path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    const navLinks = document.getElementById('navLinks');
+    const burger = document.getElementById('burger');
+    function toggleMenu() {
+      navLinks.classList.toggle('open');
+      const open = navLinks.classList.contains('open');
+      burger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Fade-in on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Active nav link highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navAnchors.forEach(a => a.style.color = '');
+          const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+          if (active) active.style.color = 'var(--lavender-deep)';
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // Contact form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      btn.textContent = 'Išsiųsta! ✓';
+      btn.style.background = 'var(--lavender-deep)';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Siųsti žinutę';
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
