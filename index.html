@@ -50,11 +50,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      background: rgba(250, 244, 234, 0.92);
+      backdrop-filter: blur(8px);
       transition: background var(--transition), box-shadow var(--transition);
     }
     nav.scrolled {
-      background: rgba(250, 248, 245, 0.96);
-      backdrop-filter: blur(8px);
+      background: rgba(250, 244, 234, 0.97);
       box-shadow: 0 1px 0 rgba(0,0,0,0.06);
     }
     .nav-logo {
@@ -332,14 +333,20 @@
     #problema {
       background: var(--plum);
       color: var(--cream);
+      padding: 0;
     }
     .problema-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 5rem;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
+      gap: 0;
+      align-items: stretch;
+      max-width: none;
+      margin: 0;
+    }
+    .problema-left {
+      padding: 7rem clamp(1.8rem, 5vw, 6rem);
+      align-self: center;
+      max-width: 760px;
     }
     .problema-left h2 { color: var(--cream); }
     .problema-left h2 em { color: var(--lavender); }
@@ -353,9 +360,11 @@
     }
     .problema-solution strong { color: var(--lavender); font-weight: 500; }
     .problema-cta { margin-top: 2.2rem; }
+    .problema-photo { position: relative; }
     .problema-photo img {
       width: 100%;
-      aspect-ratio: 4/5;
+      height: 100%;
+      min-height: 520px;
       object-fit: cover;
       object-position: 55% center;
       display: block;
@@ -411,17 +420,13 @@
     #paslaugos { background: var(--cream); }
     .paslaugos-header {
       max-width: 1200px;
-      margin: 0 auto 4rem;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 2rem;
+      margin: 0 auto 3.5rem;
     }
     .paslaugos-intro {
-      max-width: 420px;
+      max-width: 580px;
       color: var(--charcoal-light);
-      margin-top: 1rem;
-      font-size: 0.95rem;
+      margin-top: 1.3rem;
+      font-size: 1.02rem;
     }
     .services-grid {
       max-width: 1200px;
@@ -607,31 +612,23 @@
     }
 
     /* ── ABOUT ── */
-    #apie { background: var(--cream); }
+    #apie { background: var(--cream); padding: 0; }
     .apie-grid {
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: none;
+      margin: 0;
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 6rem;
-      align-items: start;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 0;
+      align-items: stretch;
     }
     .apie-photo-wrap {
       position: relative;
     }
     .apie-photo {
       width: 100%;
-      aspect-ratio: 3/4;
+      height: 100%;
+      min-height: 520px;
       background: var(--beige);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 1rem;
-      color: var(--lavender-deep);
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1rem;
     }
     .apie-photo svg { opacity: 0.35; }
     .apie-photo-deco-1 {
@@ -642,7 +639,11 @@
       border: 1.5px solid var(--coral);
       z-index: -1;
     }
-    .apie-text { padding-top: 1rem; }
+    .apie-text {
+      padding: 7rem clamp(1.8rem, 5vw, 6rem);
+      align-self: center;
+      max-width: 760px;
+    }
     .apie-text h2 { margin-bottom: 2rem; }
     .apie-bio {
       font-size: 1rem;
@@ -880,10 +881,8 @@
   <!-- SERVICES -->
   <section id="paslaugos">
     <div class="paslaugos-header fade-in">
-      <div>
-        <p class="section-label">Paslaugos</p>
-        <h2>Ką <em>kuriu</em><br />tau.</h2>
-      </div>
+      <p class="section-label">Paslaugos</p>
+      <h2>Ką <em>kuriu</em> tau.</h2>
       <p class="paslaugos-intro">Šiuo metu kuriu svetaines pradedantiems verslams. Štai kaip atrodo visas procesas — paprastas ir aiškus.</p>
     </div>
 
