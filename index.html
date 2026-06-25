@@ -13,13 +13,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream: #FAF8F5;
-      --beige: #EDE8DF;
-      --charcoal: #1C1C1C;
-      --charcoal-light: #4A4A4A;
-      --lavender: #B8A9C9;
-      --lavender-deep: #8B7BA8;
-      --lavender-pale: #E8E2F0;
+      --cream: #FAF4EA;
+      --beige: #F2E4CB;
+      --charcoal: #2E1A28;
+      --charcoal-light: #7C5C69;
+      /* Šilta paletė: avietinė = pagrindinis akcentas, slyvų violetinė = tamsios sekcijos, korališka = šilta detalė */
+      --lavender: #B5274A;        /* avietinė (akcentas) */
+      --lavender-deep: #7A1E3E;   /* gili avietinė / slyvų */
+      --lavender-pale: #F8DEC9;   /* švelni korališka-kreminė (lengvas fonas) */
+      --plum: #4A1B38;            /* tamsiai violetinė sekcija (vietoj juodos) */
+      --plum-deep: #38132E;       /* dar tamsesnė (poraštė) */
+      --coral: #E07E52;           /* korališka (šiltos detalės) */
       --white: #FFFFFF;
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'DM Sans', system-ui, sans-serif;
@@ -107,31 +111,36 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      position: relative;
+      min-height: 92vh;
+      display: flex;
       align-items: center;
       padding: 8rem 4vw 4rem;
-      gap: 4rem;
-      position: relative;
       overflow: hidden;
     }
-    .hero-bg-letter {
+    .hero-photo-bg {
       position: absolute;
-      right: -2vw;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--font-display);
-      font-size: clamp(18rem, 30vw, 42rem);
-      font-weight: 700;
-      color: var(--lavender-pale);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
+      inset: 0;
+      background-image: url('images/DSC08444.jpg');
+      background-size: cover;
+      background-position: 68% center;
       z-index: 0;
-      opacity: 0.55;
     }
-    .hero-text { position: relative; z-index: 1; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right,
+        var(--cream) 0%,
+        rgba(250,244,234,0.94) 30%,
+        rgba(250,244,234,0.55) 50%,
+        rgba(250,244,234,0) 72%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 660px;
+    }
     .hero-eyebrow {
       font-size: 0.75rem;
       letter-spacing: 0.22em;
@@ -151,15 +160,26 @@
     }
     h1 {
       font-family: var(--font-display);
-      font-size: clamp(3.2rem, 7vw, 7rem);
+      font-size: clamp(2.3rem, 4.2vw, 4rem);
       font-weight: 600;
-      line-height: 1.05;
+      line-height: 1.12;
       letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2.2rem;
+      color: var(--charcoal);
     }
     h1 em {
       font-style: italic;
       color: var(--lavender-deep);
+    }
+    .hero-sub {
+      display: block;
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+      font-weight: 300;
+      font-style: normal;
+      color: var(--charcoal-light);
+      margin-top: 1.3rem;
+      line-height: 1.5;
     }
     .hero-tagline {
       font-size: clamp(1rem, 1.5vw, 1.15rem);
@@ -235,7 +255,7 @@
       right: -1.5rem;
       width: 70%;
       height: 70%;
-      border: 1.5px solid var(--lavender);
+      border: 1.5px solid var(--coral);
       z-index: -1;
     }
     .hero-scroll {
@@ -257,7 +277,7 @@
     .hero-scroll-line {
       width: 1px;
       height: 3rem;
-      background: linear-gradient(to bottom, var(--lavender), transparent);
+      background: linear-gradient(to bottom, var(--coral), transparent);
       animation: scrollLine 2s ease-in-out infinite;
     }
     @keyframes scrollLine {
@@ -310,19 +330,36 @@
 
     /* ── PROBLEM / SOLUTION ── */
     #problema {
-      background: var(--charcoal);
+      background: var(--plum);
       color: var(--cream);
     }
     .problema-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 5rem;
-      align-items: start;
+      align-items: center;
       max-width: 1200px;
       margin: 0 auto;
     }
     .problema-left h2 { color: var(--cream); }
     .problema-left h2 em { color: var(--lavender); }
+    #problema .section-label { color: var(--lavender); }
+    #problema .section-label::before { background: var(--lavender); }
+    .problema-solution {
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
+      color: rgba(250,244,234,0.85);
+      margin-top: 2rem;
+      line-height: 1.8;
+    }
+    .problema-solution strong { color: var(--lavender); font-weight: 500; }
+    .problema-cta { margin-top: 2.2rem; }
+    .problema-photo img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: 55% center;
+      display: block;
+    }
     .pain-list {
       list-style: none;
       margin-top: 2.5rem;
@@ -449,6 +486,78 @@
       line-height: 1.65;
     }
 
+    /* ── PROCESS ── */
+    .process-wrap { max-width: 1200px; margin: 0 auto; }
+    .process-list { list-style: none; max-width: 840px; }
+    .process-step {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--beige);
+      align-items: flex-start;
+    }
+    .process-step:last-child { border-bottom: none; }
+    .process-num {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--lavender);
+      line-height: 1;
+      min-width: 2.6rem;
+    }
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .process-step p { font-size: 0.92rem; color: var(--charcoal-light); line-height: 1.6; }
+    .process-duration {
+      max-width: 840px;
+      margin-top: 1.8rem;
+      font-size: 0.98rem;
+      color: var(--charcoal-light);
+    }
+    .process-duration strong { color: var(--lavender-deep); font-weight: 600; }
+
+    /* ── PRICING ── */
+    .pricing { max-width: 1200px; margin: 4.5rem auto 0; }
+    .pricing-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+    }
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 840px;
+    }
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid var(--beige);
+      padding: 2rem;
+    }
+    .pricing-card-soft { background: var(--lavender-pale); border-color: transparent; }
+    .pricing-amount {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--lavender);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .pricing-name { font-weight: 500; font-size: 1.05rem; margin-bottom: 0.6rem; }
+    .pricing-desc { font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; }
+    .pricing-note {
+      font-size: 0.82rem;
+      color: var(--charcoal-light);
+      margin-top: 1.5rem;
+      max-width: 840px;
+      opacity: 0.85;
+    }
+
     /* ── PORTFOLIO ── */
     #portfelis { background: var(--beige); }
     .portfelis-header {
@@ -530,7 +639,7 @@
       top: -1.2rem; right: -1.2rem;
       width: 55%;
       height: 45%;
-      border: 1.5px solid var(--lavender);
+      border: 1.5px solid var(--coral);
       z-index: -1;
     }
     .apie-text { padding-top: 1rem; }
@@ -568,7 +677,7 @@
     }
 
     /* ── CONTACT ── */
-    #kontaktai { background: var(--charcoal); color: var(--cream); }
+    #kontaktai { background: var(--plum); color: var(--cream); }
     .kontaktai-inner {
       max-width: 700px;
       margin: 0 auto;
@@ -643,7 +752,7 @@
 
     /* ── FOOTER ── */
     footer {
-      background: #111111;
+      background: var(--plum-deep);
       color: rgba(250,248,245,0.4);
       padding: 2.5rem 4vw;
       display: flex;
@@ -678,19 +787,23 @@
 
     /* ── MOBILE ── */
     @media (max-width: 900px) {
-      #hero { grid-template-columns: 1fr; padding-top: 7rem; gap: 3rem; }
-      .hero-bg-letter { display: none; }
-      .hero-image { order: -1; }
-      .hero-photo-wrap { width: min(280px, 80vw); }
-      .hero-text { text-align: center; }
-      .hero-eyebrow { justify-content: center; }
-      .hero-tagline { margin: 0 auto 2.5rem; }
+      #hero { min-height: 90vh; padding: 7rem 6vw 4rem; align-items: flex-end; }
+      .hero-photo-bg { background-position: 60% center; }
+      .hero-overlay {
+        background: linear-gradient(to top,
+          var(--cream) 0%,
+          rgba(250,244,234,0.95) 32%,
+          rgba(250,244,234,0.5) 62%,
+          rgba(250,244,234,0.1) 100%);
+      }
+      .hero-content { max-width: 100%; }
       .problema-grid { grid-template-columns: 1fr; gap: 3rem; }
       .problema-right { padding-top: 0; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
       .apie-grid { grid-template-columns: 1fr; gap: 3rem; }
       .paslaugos-header { flex-direction: column; align-items: flex-start; }
+      .pricing-cards { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
@@ -723,7 +836,7 @@
     <a href="#" class="nav-logo">Ingrida Kuria</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#paslaugos" onclick="closeMenu()">Paslaugos</a></li>
-      <li><a href="#portfelis" onclick="closeMenu()">Portfelis</a></li>
+      <li><a href="#portfelis" onclick="closeMenu()">Atlikti darbai</a></li>
       <li><a href="#apie" onclick="closeMenu()">Apie</a></li>
       <li><a href="#kontaktai" onclick="closeMenu()">Kontaktai</a></li>
     </ul>
@@ -734,25 +847,11 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-bg-letter" aria-hidden="true">K</div>
+    <div class="hero-photo-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
 
-    <div class="hero-text fade-in">
-      <p class="hero-eyebrow">Vilnius · Lietuva</p>
-      <h1>Tavo verslas,<br /><em>matomas</em><br />pasauliui.</h1>
-      <p class="hero-tagline">Kuriu svetaines mažam verslui — greičiau, pigiau ir žmogiškai. Su dirbtinio intelekto pagalba.</p>
-      <a href="#kontaktai" class="btn">Susisiekime</a>
-    </div>
-
-    <div class="hero-image fade-in fade-in-delay-2">
-      <div class="hero-photo-wrap">
-        <img src="images/DSC08460.jpg" alt="Ingrida Kuria" style="object-position: 60% center;" />
-        <div class="hero-photo-deco" aria-hidden="true"></div>
-      </div>
-    </div>
-
-    <div class="hero-scroll" aria-hidden="true">
-      <div class="hero-scroll-line"></div>
-      <span>Slinkti</span>
+    <div class="hero-content fade-in">
+      <h1>Svetainės pradedantiems verslininkams — <em>greičiau, prieinamiau ir žmogiškai.</em><span class="hero-sub">Su dirbtinio intelekto pagalba.</span></h1>
     </div>
   </section>
 
@@ -760,26 +859,20 @@
   <section id="problema">
     <div class="problema-grid">
       <div class="problema-left fade-in">
-        <p class="section-label" style="color:var(--lavender);--tw-before-bg:var(--lavender)">Pažįstama?</p>
-        <h2>Mažas verslas.<br /><em>Didelės</em> kliūtys.</h2>
+        <p class="section-label">Pažįstama?</p>
+        <h2>Vienas žmogus,<br /><em>o darbų</em> — dešimčiai.</h2>
         <ul class="pain-list">
-          <li>Laiko nėra — viską darai pats vienas.</li>
-          <li>Svetainė brangi ir lėtai kuriama.</li>
-          <li>Socialinis tinklas veikia, bet to per maža.</li>
-          <li>Konkurentai matomi — tu ne.</li>
+          <li>Esi sau ir vadovas, ir rinkodara, ir buhalteris.</li>
+          <li>Svetainė atrodo brangi ir užtrunka mėnesius.</li>
+          <li>Instagram veikia, bet klientai tavęs vis tiek nesuranda.</li>
         </ul>
-      </div>
-      <div class="problema-right fade-in fade-in-delay-2">
-        <p class="section-label">Sprendimas</p>
-        <h2 style="color:var(--cream)">Kitoks<br /><em>kelias.</em></h2>
-        <p class="sprendimas-text">
-          Su <strong>dirbtinio intelekto pagalba</strong> galiu sukurti profesionalią svetainę greičiau ir pigiau nei tradiciniai metodai. Tai reiškia, kad tu gali sutaupyti tiek laiko, tiek pinigų — ir vis tiek gauti kokybę.
-          <br /><br />
-          Esu maža verslininkė pati, todėl žinau, kaip svarbu kiekvienas litas ir kiekviena valanda.
+        <p class="problema-solution">
+          Štai kur įsijungiu aš. Su <strong>dirbtinio intelekto pagalba</strong> kuriu svetaines greičiau ir prieinamiau — be mėnesių laukimo ir įmantrių sąskaitų. Pati esu smulki verslininkė, todėl žinau, kiek vertas kiekvienas <strong>euras</strong> ir kiekviena valanda.
         </p>
-        <blockquote class="sprendimas-highlight">
-          „Tavo verslas nusipelno būti matomas — nesvarbu, koks jo dydis."
-        </blockquote>
+        <a href="#paslaugos" class="btn problema-cta">Paslaugos</a>
+      </div>
+      <div class="problema-photo fade-in fade-in-delay-2">
+        <img src="images/DSC08495.jpg" alt="Ingrida Kuria prie lango" />
       </div>
     </div>
   </section>
@@ -791,52 +884,80 @@
         <p class="section-label">Paslaugos</p>
         <h2>Ką <em>kuriu</em><br />tau.</h2>
       </div>
-      <p class="paslaugos-intro">Pradedame nuo svetainės — nes tai pamatas. Likusios paslaugos ateina netrukus.</p>
+      <p class="paslaugos-intro">Šiuo metu kuriu svetaines pradedantiems verslams. Štai kaip atrodo visas procesas — paprastas ir aiškus.</p>
     </div>
 
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-        </svg>
-        <div class="service-title">Svetainių kūrimas</div>
-        <p class="service-desc">Moderni, greita ir mobiliems pritaikyta svetainė. Nuo dizaino iki paleidimo — be galvos skausmo.</p>
-      </div>
+    <div class="process-wrap">
+      <ol class="process-list">
+        <li class="process-step fade-in">
+          <span class="process-num">01</span>
+          <div>
+            <h3>Nemokamas pažintinis skambutis</h3>
+            <p>30 min — trumpai aptariame tavo poreikį ir lūkesčius.</p>
+          </div>
+        </li>
+        <li class="process-step fade-in">
+          <span class="process-num">02</span>
+          <div>
+            <h3>Klausimyno pildymas</h3>
+            <p>Savarankiškai užpildai reikalingą informaciją, pasidalini prekės ženklu (logotipu, spalvomis, šriftais), tekstais ir nuotraukomis, atspindinčiomis tavo veiklą.</p>
+          </div>
+        </li>
+        <li class="process-step fade-in">
+          <span class="process-num">03</span>
+          <div>
+            <h3>Tinklalapio kūrimas</h3>
+            <p>Per 2–3 darbo dienas sukuriu tavo svetainę.</p>
+          </div>
+        </li>
+        <li class="process-step fade-in">
+          <span class="process-num">04</span>
+          <div>
+            <h3>Korekcijų skambutis</h3>
+            <p>15 min — peržiūrime kartu, pasidalini pastabomis ir pataisymais.</p>
+          </div>
+        </li>
+        <li class="process-step fade-in">
+          <span class="process-num">05</span>
+          <div>
+            <h3>Finalinės korekcijos</h3>
+            <p>Per 1–2 darbo dienas atlieku paskutinius pataisymus.</p>
+          </div>
+        </li>
+        <li class="process-step fade-in">
+          <span class="process-num">06</span>
+          <div>
+            <h3>Tinklalapio pateikimas</h3>
+            <p>Perduodu tau paruoštą, veikiančią svetainę.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="process-duration">Projekto trukmė: <strong>1–2 savaitės</strong>, priklausomai nuo komunikacijos efektyvumo.</p>
+    </div>
 
-      <div class="service-card coming-soon fade-in fade-in-delay-1">
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M15 10l-4 4-4-4"/><path d="M12 14V3"/><rect x="3" y="17" width="18" height="4" rx="1"/>
-        </svg>
-        <div class="service-badge">Netrukus</div>
-        <div class="service-title">Turinio kūrimas</div>
-        <p class="service-desc">UGC turinys, tekstai ir vizualai, kurie kalba tavo klientų kalba.</p>
+    <div class="pricing fade-in">
+      <p class="section-label">Kainodara</p>
+      <h3 class="pricing-title">Orientacinės kainos</h3>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <div class="pricing-amount">200 €</div>
+          <div class="pricing-name">Vienkartinis · paprastas WEB</div>
+          <p class="pricing-desc">4–5 puslapiai, be tinklaraščio ir el. parduotuvės. Be ilgalaikės priežiūros.</p>
+        </div>
+        <div class="pricing-card pricing-card-soft">
+          <div class="pricing-name">Papildomai</div>
+          <p class="pricing-desc">Hostingo ir domeno kainos — priklauso nuo tavo pasirinkto tiekėjo.</p>
+        </div>
       </div>
-
-      <div class="service-card coming-soon fade-in fade-in-delay-2">
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/>
-        </svg>
-        <div class="service-badge">Netrukus</div>
-        <div class="service-title">Skaitmeninė strategija</div>
-        <p class="service-desc">Aiški veiksmų plano, kaip tavo verslas auga skaitmeninėje erdvėje.</p>
-      </div>
-
-      <div class="service-card coming-soon fade-in fade-in-delay-3">
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
-        </svg>
-        <div class="service-badge">Netrukus</div>
-        <div class="service-title">Prekės ženklo tapatybė</div>
-        <p class="service-desc">Logotipas, spalvos ir stilius, kuris atstovauja tave ir tavo verslą.</p>
-      </div>
+      <p class="pricing-note">* Tai orientacinės kainos — galutinė priklauso nuo projekto apimties. Kainodarą dar tikslinsime.</p>
     </div>
   </section>
 
   <!-- PORTFOLIO -->
   <section id="portfelis">
     <div class="portfelis-header fade-in">
-      <p class="section-label">Portfelis</p>
-      <h2>Darbai, kurie<br /><em>kalba</em> už save.</h2>
+      <p class="section-label">Atlikti darbai</p>
+      <h2>Darbai, kurie <em>kalba</em> už save.</h2>
     </div>
     <div class="portfolio-grid">
       <div class="portfolio-card fade-in">
@@ -862,26 +983,24 @@
     <div class="apie-grid">
       <div class="apie-photo-wrap fade-in">
         <div class="apie-photo">
-          <img src="images/DSC08495.jpg" alt="Ingrida Kuria prie lango" style="object-position: 55% center;" />
+          <img src="images/DSC08551.jpg" alt="Ingrida Kuria su knyga „Lietuvių liaudies menas“" style="object-position: 58% center;" />
         </div>
-        <div class="apie-photo-deco-1" aria-hidden="true"></div>
       </div>
 
       <div class="apie-text fade-in fade-in-delay-2">
         <p class="section-label">Apie mane</p>
-        <h2>Sveika, aš —<br /><em>Ingrida.</em></h2>
+        <h2>Labas, aš <em>Ingrida</em></h2>
         <p class="apie-bio">
-          Esu visą gyvenimą besimokanti kūrėja su verslo vadybos ir multimedijų dizaino išsilavinimu. Po stipraus perdegimo pradėjau laisvai samdomo specialisto kelią — ir jis išmokė mane, ką reiškia būti vienu žmogumi visam verslui. Darbas lietuviškų ūkininkų krautuvėje „Savam kieme" grąžino man pasitikėjimą savimi ir parodė, kaip svarbu mažam verslui būti matamam. Dabar dirbtinis intelektas eina koja kojon su manimi — ir tai leidžia man kurti greitai, kokybiškai ir prieinamai.
+          Esu visą gyvenimą besimokanti kūrėja su marketingo, grafinio dizaino ir turinio kūrimo žiniomis. Pati esu mažo verslo savininkė ir puikiai žinau, ką reiškia būti žmogumi-orkestru.
+          <br /><br />
+          Norėdama supaprastinti savo kasdienybę, mokausi įgalinti dirbtinį intelektą.
         </p>
         <div class="apie-values">
-          <span class="value-pill">Kūrybiškumas</span>
-          <span class="value-pill">Sąmoningumas</span>
           <span class="value-pill">Tikrumas</span>
           <span class="value-pill">Augimas</span>
+          <span class="value-pill">Sąmoningumas</span>
+          <span class="value-pill">Natūralumas</span>
         </div>
-        <blockquote class="apie-quote">
-          „Noriu, kad kiekvienas mažas verslas jaustųsi palaikomas ir matomas."
-        </blockquote>
       </div>
     </div>
   </section>
