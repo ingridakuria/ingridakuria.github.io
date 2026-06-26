@@ -3,8 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ingrida Kuria — Skaitmeninė buvimas mažam verslui</title>
-  <meta name="description" content="AI pagalba kuriu svetaines mažam verslui. Greičiau. Pigiau. Žmogiškai. Vilnius, Lietuva." />
+  <title>Ingrida Kuria — svetainių kūrimas pradedantiems verslams | Vilnius</title>
+  <meta name="description" content="Kuriu modernias, žmogiškas svetaines pradedantiems verslams — greičiau ir prieinamiau, su dirbtinio intelekto pagalba. Vilnius, Lietuva." />
+  <meta name="author" content="Ingrida Kuria" />
+  <meta name="theme-color" content="#4A1B38" />
+  <link rel="canonical" href="https://ingridakuria.github.io/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <!-- Open Graph (dalijimuisi socialiniuose tinkluose) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="lt_LT" />
+  <meta property="og:site_name" content="Ingrida Kuria" />
+  <meta property="og:url" content="https://ingridakuria.github.io/" />
+  <meta property="og:title" content="Ingrida Kuria — svetainių kūrimas pradedantiems verslams" />
+  <meta property="og:description" content="Modernios, žmogiškos svetainės pradedantiems verslams — greičiau ir prieinamiau, su dirbtinio intelekto pagalba. Vilnius." />
+  <meta property="og:image" content="https://ingridakuria.github.io/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ingrida Kuria — svetainių kūrimas pradedantiems verslams" />
+  <meta name="twitter:description" content="Modernios, žmogiškos svetainės pradedantiems verslams — su dirbtinio intelekto pagalba. Vilnius." />
+  <meta name="twitter:image" content="https://ingridakuria.github.io/images/og-image.jpg" />
+
+  <!-- Struktūriniai duomenys (Google supranta, kas tu esi) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Ingrida Kuria",
+    "description": "Svetainių kūrimas pradedantiems verslams su dirbtinio intelekto pagalba.",
+    "url": "https://ingridakuria.github.io/",
+    "image": "https://ingridakuria.github.io/images/og-image.jpg",
+    "email": "ingridakuria@gmail.com",
+    "founder": { "@type": "Person", "name": "Ingrida Kuria" },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Vilnius",
+      "addressCountry": "LT"
+    },
+    "areaServed": "Lietuva",
+    "knowsAbout": ["svetainių kūrimas", "web dizainas", "skaitmeninė rinkodara", "dirbtinis intelektas"],
+    "priceRange": "€€"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -533,28 +576,56 @@
       font-weight: 600;
       margin-bottom: 1.8rem;
     }
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      max-width: 840px;
-    }
-    .pricing-card {
+    .offer-card {
+      max-width: 520px;
       background: var(--white);
       border: 1px solid var(--beige);
-      padding: 2rem;
+      padding: 2.6rem 2.4rem;
     }
-    .pricing-card-soft { background: var(--lavender-pale); border-color: transparent; }
-    .pricing-amount {
+    .offer-name {
       font-family: var(--font-display);
-      font-size: 2.6rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .offer-price {
+      font-family: var(--font-display);
+      font-size: 3.4rem;
       font-weight: 600;
       color: var(--lavender);
       line-height: 1;
-      margin-bottom: 0.6rem;
+      margin: 0.7rem 0 0.2rem;
     }
-    .pricing-name { font-weight: 500; font-size: 1.05rem; margin-bottom: 0.6rem; }
-    .pricing-desc { font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; }
+    .offer-price-note { color: var(--charcoal-light); font-size: 0.9rem; margin-bottom: 1.9rem; }
+    .offer-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    .offer-list li {
+      display: flex;
+      gap: 0.7rem;
+      font-size: 0.96rem;
+      color: var(--charcoal);
+      align-items: flex-start;
+    }
+    .offer-list li::before { content: '✓'; color: var(--lavender); font-weight: 600; flex-shrink: 0; }
+    .offer-maintenance-note {
+      margin-top: 1.8rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid var(--beige);
+      font-size: 0.9rem;
+      color: var(--charcoal-light);
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .pricing-addons { max-width: 860px; margin-top: 3rem; }
+    .pricing-addon {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--beige);
+      font-size: 0.98rem;
+    }
+    .pricing-addon strong { color: var(--lavender); font-family: var(--font-display); font-size: 1.3rem; white-space: nowrap; }
     .pricing-note {
       font-size: 0.82rem;
       color: var(--charcoal-light);
@@ -677,12 +748,106 @@
       color: var(--lavender-deep);
     }
 
+    /* ── TESTIMONIALS ── */
+    #atsiliepimai { background: var(--beige); }
+    .atsiliepimai-header { max-width: 1200px; margin: 0 auto 3.5rem; }
+    .testimonials-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--cream);
+      padding: 2.4rem 2rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      min-height: 280px;
+    }
+    .testimonial-quote-mark {
+      font-family: var(--font-display);
+      font-size: 3.4rem;
+      line-height: 0.4;
+      color: var(--coral);
+      height: 1.4rem;
+    }
+    .testimonial-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.18rem;
+      line-height: 1.5;
+      color: var(--charcoal);
+    }
+    .testimonial-card.placeholder .testimonial-text { color: var(--charcoal-light); }
+    .testimonial-author { margin-top: auto; }
+    .testimonial-name { font-weight: 500; font-size: 0.95rem; color: var(--charcoal); }
+    .testimonial-role {
+      font-size: 0.78rem;
+      color: var(--charcoal-light);
+      letter-spacing: 0.04em;
+      margin-top: 0.2rem;
+    }
+    .atsiliepimai-note {
+      max-width: 1200px;
+      margin: 1.5rem auto 0;
+      font-size: 0.82rem;
+      color: var(--charcoal-light);
+      opacity: 0.85;
+    }
+
+    /* ── FAQ / D.U.K. ── */
+    #duk { background: var(--cream); }
+    .duk-header { max-width: 820px; margin: 0 auto 2.5rem; }
+    .faq-list { max-width: 820px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--beige); }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      transition: color var(--transition);
+    }
+    .faq-item summary:hover { color: var(--lavender-deep); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-icon {
+      flex-shrink: 0;
+      color: var(--lavender);
+      font-size: 1.7rem;
+      line-height: 1;
+      transition: transform var(--transition);
+    }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 0 1.7rem;
+      max-width: 700px;
+      color: var(--charcoal-light);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
     /* ── CONTACT ── */
     #kontaktai { background: var(--plum); color: var(--cream); }
     .kontaktai-inner {
-      max-width: 700px;
+      max-width: 860px;
       margin: 0 auto;
       text-align: center;
+    }
+    .calendly-inline-widget {
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 14px 50px rgba(0,0,0,0.28);
+      background: var(--cream);
     }
     .kontaktai-inner .section-label { justify-content: center; color: var(--lavender); }
     .kontaktai-inner .section-label::before { background: var(--lavender); }
@@ -772,6 +937,9 @@
       color: rgba(250,248,245,0.7);
       text-decoration: none;
     }
+    .footer-center { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+    .footer-link { color: rgba(250,248,245,0.55); text-decoration: none; }
+    .footer-link:hover { color: var(--lavender); text-decoration: underline; }
     .footer-socials {
       display: flex;
       gap: 1.2rem;
@@ -802,6 +970,7 @@
       .problema-right { padding-top: 0; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
       .apie-grid { grid-template-columns: 1fr; gap: 3rem; }
       .paslaugos-header { flex-direction: column; align-items: flex-start; }
       .pricing-cards { grid-template-columns: 1fr; }
@@ -826,6 +995,7 @@
       .burger { display: flex; z-index: 101; }
       .services-grid { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: 1fr; }
+      .calendly-inline-widget { height: 1000px !important; }
       .footer { flex-direction: column; text-align: center; }
     }
   </style>
@@ -873,7 +1043,7 @@
         <a href="#paslaugos" class="btn problema-cta">Paslaugos</a>
       </div>
       <div class="problema-photo fade-in fade-in-delay-2">
-        <img src="images/DSC08495.jpg" alt="Ingrida Kuria prie lango" />
+        <img src="images/DSC08495.jpg" alt="Ingrida Kuria kuria svetainę prie lango" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -936,19 +1106,33 @@
 
     <div class="pricing fade-in">
       <p class="section-label">Kainodara</p>
-      <h3 class="pricing-title">Orientacinės kainos</h3>
-      <div class="pricing-cards">
-        <div class="pricing-card">
-          <div class="pricing-amount">200 €</div>
-          <div class="pricing-name">Vienkartinis · paprastas WEB</div>
-          <p class="pricing-desc">4–5 puslapiai, be tinklaraščio ir el. parduotuvės. Be ilgalaikės priežiūros.</p>
-        </div>
-        <div class="pricing-card pricing-card-soft">
-          <div class="pricing-name">Papildomai</div>
-          <p class="pricing-desc">Hostingo ir domeno kainos — priklauso nuo tavo pasirinkto tiekėjo.</p>
+      <h3 class="pricing-title">Paprasta ir aiški kaina</h3>
+
+      <div class="offer-card">
+        <div class="offer-name">Vienkartinis</div>
+        <div class="offer-price">111 €</div>
+        <div class="offer-price-note">vienkartinis mokestis · pakeitimai 15 €/val. pagal poreikį</div>
+        <ul class="offer-list">
+          <li>Modernios svetainės sukūrimas</li>
+          <li>Hostingas įskaičiuotas</li>
+          <li>Tekstai svetainei — sukurti pagal tavo prekės ženklą</li>
+          <li>Pritaikyta telefonui ir kompiuteriui</li>
+          <li>SEO pagrindai — kad lengviau rastų Google</li>
+        </ul>
+        <p class="offer-maintenance-note">Jei nusimato daugiau korekcijų ir dažnų pakeitimų, galiu pasiūlyti nuolatinės priežiūros planą su mėnesiniu mokesčiu.</p>
+      </div>
+
+      <p class="pricing-note"><strong>Svarbu:</strong> svetainę kuriu individualiai (ne šablonu), todėl visus pakeitimus atlieku aš — tau nereikia nieko mokytis ar gilintis į techniką.</p>
+
+      <div class="pricing-addons">
+        <p class="section-label">Papildomos paslaugos</p>
+        <div class="pricing-addon">
+          <span>Prekės ženklo / vizualinio identiteto sukūrimas <span class="pt-muted">— logotipas, spalvų paletė, šriftai</span></span>
+          <strong>50 €</strong>
         </div>
       </div>
-      <p class="pricing-note">* Tai orientacinės kainos — galutinė priklauso nuo projekto apimties. Kainodarą dar tikslinsime.</p>
+
+      <p class="pricing-note"><strong>Domenas</strong> — tai tavo svetainės adresas internete (pvz. <em>tavoverslas.lt</em>), kainuoja ~12 €/metai. Arba padedu jį įsigyti (toliau už jį moki pati), arba nusiperki pati ir suteiki man prisijungimus, kad sutvarkyčiau svetainę.</p>
     </div>
   </section>
 
@@ -982,7 +1166,7 @@
     <div class="apie-grid">
       <div class="apie-photo-wrap fade-in">
         <div class="apie-photo">
-          <img src="images/DSC08551.jpg" alt="Ingrida Kuria su knyga „Lietuvių liaudies menas“" style="object-position: 58% center;" />
+          <img src="images/DSC08551.jpg" alt="Ingrida Kuria, web dizainerė iš Vilniaus" loading="lazy" decoding="async" style="object-position: 58% center;" />
         </div>
       </div>
 
@@ -1004,41 +1188,111 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section id="atsiliepimai">
+    <div class="atsiliepimai-header fade-in">
+      <p class="section-label">Atsiliepimai</p>
+      <h2>Ką sako <em>klientai</em>.</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card placeholder fade-in">
+        <div class="testimonial-quote-mark" aria-hidden="true">„</div>
+        <p class="testimonial-text">Čia atsiras tikras kliento atsiliepimas — jo žodžiai apie tai, kaip sekėsi dirbti kartu.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Kliento vardas</div>
+          <div class="testimonial-role">Verslo pavadinimas</div>
+        </div>
+      </div>
+      <div class="testimonial-card placeholder fade-in fade-in-delay-1">
+        <div class="testimonial-quote-mark" aria-hidden="true">„</div>
+        <p class="testimonial-text">Vieta antrajam atsiliepimui — apie procesą, rezultatą ar jausmą dirbant su tavimi.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Kliento vardas</div>
+          <div class="testimonial-role">Verslo pavadinimas</div>
+        </div>
+      </div>
+      <div class="testimonial-card placeholder fade-in fade-in-delay-2">
+        <div class="testimonial-quote-mark" aria-hidden="true">„</div>
+        <p class="testimonial-text">Trečioji vieta — puiki rekomendacija būsimiems klientams.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Kliento vardas</div>
+          <div class="testimonial-role">Verslo pavadinimas</div>
+        </div>
+      </div>
+    </div>
+    <p class="atsiliepimai-note fade-in">* Vietos paruoštos — čia kelsime tikrus tavo klientų atsiliepimus.</p>
+  </section>
+
+  <!-- FAQ / D.U.K. -->
+  <section id="duk">
+    <div class="duk-header fade-in">
+      <p class="section-label">D.U.K.</p>
+      <h2>Dažni <em>klausimai</em>.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item fade-in">
+        <summary>Kiek užtrunka svetainės sukūrimas?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Paprastai 1–2 savaitės — priklauso nuo to, kaip greitai pasidalini reikalinga informacija. Pati svetainė sukuriama per 2–3 darbo dienas.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Ar man reikia pačiai rašyti tekstus?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Ne. Tekstus parašau aš — pagal informaciją apie tavo veiklą ir prekės ženklą, kurią pateiki klausimyne. Žinoma, jei nori, gali pasidalinti ir savo mintimis ar tekstais.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Ar galėsiu pati redaguoti svetainę?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Svetainę kuriu individualiai (ne šablonu), todėl visus pakeitimus atlieku aš — greitai ir nebrangiai (15 €/val.). Tau nereikia nieko mokytis ar gilintis į techniką. O jei keiti dažnai — pasiūlysiu mėnesinį priežiūros planą.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Kas yra hostingas ir domenas? Kiek tai kainuoja?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Hostingas — tai vieta, kur „gyvena" tavo svetainė; jis įskaičiuotas į kainą. Domenas — tavo adresas internete (pvz. <em>tavoverslas.lt</em>), kainuoja ~12 €/metai ir perkamas tavo vardu. Padedu jį įsigyti arba nusiperki pati ir suteiki man prisijungimus.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Kaip vyksta apmokėjimas ir ar grąžinami pinigai?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Prieš pradedant darbą sumokamas avansas, o likusi suma — perdavus paruoštą svetainę. Kadangi svetainę kuriu individualiai pagal tave, 14 dienų atsisakymo teisė šiai paslaugai netaikoma, o avansas negrąžinamas — jis dengia jau pradėtą individualų darbą. Žinoma, jei paslauga būtų suteikta netinkamai, galioja visos įstatyminės tavo teisės: pataisysiu arba spręsim kartu.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Ar svetainė nebus „šabloninė", nes naudoji dirbtinį intelektą?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Ne. Dirbtinis intelektas man padeda dirbti greičiau ir prieinamiau, bet kiekvieną svetainę kuriu individualiai — pagal tavo prekės ženklą, spalvas ir stilių. Tai įrankis, ne šablonas.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>O jei man nepatiks rezultatas?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Dirbame kartu. Procese yra atskiras korekcijų etapas, kuriame pataisau viską pagal tavo pastabas — kol būsi tikrai patenkinta.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Ką man reikės pateikti?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Per klausimyną pasidalinsi informacija apie savo veiklą, nuotraukomis ir prekės ženklu (logotipu, spalvomis, šriftais), jei jį turi. Neturi prekės ženklo? Galiu jį sukurti — vizualinio identiteto paslauga kainuoja 50 €.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Ar mano svetainė bus optimizuota SEO (matoma Google)?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">SEO — tai svetainės paruošimas taip, kad Google ją lengviau rastų ir rodytų aukščiau paieškoje. Kiekvieną svetainę kuriu su techniniais SEO pagrindais: tvarkingu kodu, antraštėmis, aprašymais, greičiu, mobilumu ir raktažodžiais. Svarbu suprasti — SEO nėra magija per naktį: matomumas auga laikui bėgant, jam padeda turinys, „Google Business" paskyra ir nuoseklumas. Aš pastatau tvirtą pamatą ir patariu, ką daryti toliau.</div>
+      </details>
+      <details class="faq-item fade-in">
+        <summary>Ar svetainė veiks telefone ir planšetėje?<span class="faq-icon" aria-hidden="true">+</span></summary>
+        <div class="faq-answer">Taip — kiekvieną svetainę pritaikau visiems ekranams: telefonui, planšetei ir kompiuteriui. Šiandien dauguma lankytojų naršo telefonu, todėl tai būtina.</div>
+      </details>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="kontaktai">
     <div class="kontaktai-inner">
       <p class="section-label">Kontaktai</p>
       <h2>Pradėkime<br /><em>pokalbį.</em></h2>
-      <p class="kontaktai-sub">Nesvarbu, ar žinai, ko nori — aš padėsiu išsiaiškinti. Parašyk ir per 48 val. susisieksiu.</p>
+      <p class="kontaktai-sub">Pasirink tau patogų laiką nemokamam 30 min pokalbiui — be jokių įsipareigojimų. Kartu išsiaiškinsim, ko tavo verslui reikia.</p>
 
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="vardas">Vardas</label>
-            <input type="text" id="vardas" name="vardas" placeholder="Tavo vardas" required />
-          </div>
-          <div class="form-group">
-            <label for="el-pastas">El. paštas</label>
-            <input type="email" id="el-pastas" name="email" placeholder="tavo@pastas.lt" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="zinute">Žinutė</label>
-          <textarea id="zinute" name="zinute" rows="5" placeholder="Papasakok apie savo verslą ir ko norėtum..."></textarea>
-        </div>
-        <div class="form-submit">
-          <button type="submit" class="btn btn-light">Siųsti žinutę</button>
-        </div>
-      </form>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/ingridakuria/nemokamas-pazintinis-skambutis?primary_color=b5274a" style="min-width:320px;height:700px;"></div>
 
-      <p class="contact-email-alt">Arba rašyk tiesiai: <a href="mailto:ingridakuria@gmail.com">ingridakuria@gmail.com</a></p>
+      <p class="contact-email-alt">Nemėgsti skambučių? Rašyk tiesiai: <a href="mailto:ingridakuria@gmail.com">ingridakuria@gmail.com</a></p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <a href="#" class="footer-logo">Ingrida Kuria</a>
-    <span>© 2026 · Matomas verslas. Žmogiškas požiūris.</span>
+    <div class="footer-center">
+      <span>© 2026 · Matomas verslas. Žmogiškas požiūris.</span>
+      <a href="privatumo-politika.html" class="footer-link">Privatumo politika</a>
+    </div>
     <div class="footer-socials">
       <a href="#" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1055,6 +1309,9 @@
       </a>
     </div>
   </footer>
+
+  <!-- Calendly -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
   <script>
     // Nav scroll effect
