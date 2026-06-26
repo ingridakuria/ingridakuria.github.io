@@ -576,12 +576,45 @@
       font-weight: 600;
       margin-bottom: 1.8rem;
     }
+    .pricing-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+      max-width: 1040px;
+    }
     .offer-card {
-      max-width: 520px;
       background: var(--white);
       border: 1px solid var(--beige);
       padding: 2.6rem 2.4rem;
     }
+    .offer-domain {
+      margin-top: 1.7rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--beige);
+      font-size: 0.96rem;
+      line-height: 1.6;
+      color: var(--charcoal);
+    }
+    .offer-domain strong { color: var(--lavender-deep); font-weight: 500; }
+    .pricing-callouts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .pricing-callout {
+      background: var(--lavender-pale);
+      border-left: 3px solid var(--lavender);
+      padding: 1.8rem 2rem;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+      line-height: 1.45;
+      color: var(--charcoal);
+    }
+    .addon-q { font-weight: 500; font-size: 1.05rem; color: var(--charcoal); margin-bottom: 0.35rem; }
+    .addon-desc { font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.55; }
     .offer-name {
       font-family: var(--font-display);
       font-size: 1.6rem;
@@ -619,9 +652,9 @@
     .pricing-addon {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      padding: 1rem 0;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
       border-bottom: 1px solid var(--beige);
       font-size: 0.98rem;
     }
@@ -905,16 +938,29 @@
       color: var(--white);
     }
     .btn-light:hover { background: var(--lavender-deep); }
-    .contact-email-alt {
-      margin-top: 2rem;
-      font-size: 0.82rem;
-      color: rgba(250,248,245,0.4);
+    .contact-alt { text-align: center; }
+    .contact-or {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 320px;
+      margin: 2.8rem auto 1.6rem;
+      color: rgba(250,248,245,0.55);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
-    .contact-email-alt a {
-      color: var(--lavender);
-      text-decoration: none;
+    .contact-or::before, .contact-or::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(250,248,245,0.2);
     }
-    .contact-email-alt a:hover { text-decoration: underline; }
+    .contact-alt-text {
+      color: rgba(250,248,245,0.75);
+      font-size: 0.98rem;
+      margin-bottom: 1.4rem;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -973,7 +1019,7 @@
       .testimonials-grid { grid-template-columns: 1fr; }
       .apie-grid { grid-template-columns: 1fr; gap: 3rem; }
       .paslaugos-header { flex-direction: column; align-items: flex-start; }
-      .pricing-cards { grid-template-columns: 1fr; }
+      .pricing-layout { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
@@ -1007,7 +1053,6 @@
     <a href="#" class="nav-logo">Ingrida Kuria</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#paslaugos" onclick="closeMenu()">Paslaugos</a></li>
-      <li><a href="#portfelis" onclick="closeMenu()">Atlikti darbai</a></li>
       <li><a href="#apie" onclick="closeMenu()">Apie</a></li>
       <li><a href="#kontaktai" onclick="closeMenu()">Kontaktai</a></li>
     </ul>
@@ -1052,8 +1097,8 @@
   <section id="paslaugos">
     <div class="paslaugos-header fade-in">
       <p class="section-label">Paslaugos</p>
-      <h2>Ką <em>kuriu</em> tau.</h2>
-      <p class="paslaugos-intro">Šiuo metu kuriu svetaines pradedantiems verslams. Štai kaip atrodo visas procesas — paprastas ir aiškus.</p>
+      <h2>Tavo internetinė svetainė — <em>paprastai, greitai ir prieinamai!</em></h2>
+      <p class="paslaugos-intro">Kaip atrodo procesas:</p>
     </div>
 
     <div class="process-wrap">
@@ -1108,55 +1153,38 @@
       <p class="section-label">Kainodara</p>
       <h3 class="pricing-title">Paprasta ir aiški kaina</h3>
 
-      <div class="offer-card">
-        <div class="offer-name">Vienkartinis</div>
-        <div class="offer-price">111 €</div>
-        <div class="offer-price-note">vienkartinis mokestis · pakeitimai 15 €/val. pagal poreikį</div>
-        <ul class="offer-list">
-          <li>Modernios svetainės sukūrimas</li>
-          <li>Hostingas įskaičiuotas</li>
-          <li>Tekstai svetainei — sukurti pagal tavo prekės ženklą</li>
-          <li>Pritaikyta telefonui ir kompiuteriui</li>
-          <li>SEO pagrindai — kad lengviau rastų Google</li>
-        </ul>
-        <p class="offer-maintenance-note">Jei nusimato daugiau korekcijų ir dažnų pakeitimų, galiu pasiūlyti nuolatinės priežiūros planą su mėnesiniu mokesčiu.</p>
-      </div>
+      <div class="pricing-layout">
+        <div class="offer-card">
+          <div class="offer-name">Vienkartinis</div>
+          <div class="offer-price">111 €</div>
+          <div class="offer-price-note">vienkartinis mokestis · pakeitimai 15 €/val. pagal poreikį</div>
+          <ul class="offer-list">
+            <li>Modernios svetainės sukūrimas</li>
+            <li>Hostingas įskaičiuotas</li>
+            <li>Tekstai svetainei — sukurti pagal tavo prekės ženklą</li>
+            <li>Pritaikyta telefonui ir kompiuteriui</li>
+            <li>SEO pagrindai — kad lengviau rastų Google</li>
+          </ul>
+          <div class="offer-domain">
+            <strong>Domeno kaina neįskaičiuota.</strong> Domenas — tai tavo adresas internete (pvz. <em>tavoverslas.lt</em>), ~12 €/metai. Juo pasirūpinu aš arba nusiperki pati ir suteiki man prisijungimus.
+          </div>
+        </div>
 
-      <p class="pricing-note"><strong>Svarbu:</strong> svetainę kuriu individualiai (ne šablonu), todėl visus pakeitimus atlieku aš — tau nereikia nieko mokytis ar gilintis į techniką.</p>
+        <div class="pricing-callouts">
+          <blockquote class="pricing-callout">Svetainę kuriu individualiai — ne pagal šabloną. Visus pakeitimus atlieku aš, tad tau nereikia nieko mokytis ar gilintis į techniką.</blockquote>
+          <blockquote class="pricing-callout">Jei nusimato dažnesnių pakeitimų — pasiūlysiu nuolatinės priežiūros planą su mėnesiniu mokesčiu.</blockquote>
+        </div>
+      </div>
 
       <div class="pricing-addons">
         <p class="section-label">Papildomos paslaugos</p>
         <div class="pricing-addon">
-          <span>Prekės ženklo / vizualinio identiteto sukūrimas <span class="pt-muted">— logotipas, spalvų paletė, šriftai</span></span>
+          <div>
+            <div class="addon-q">Neturi brandbook'o (vizualinių prekės ženklo gairių)? Ne bėda!</div>
+            <div class="addon-desc">Prekės ženklo / vizualinio identiteto sukūrimas — logotipas, spalvų paletė, šriftai ir pozicionavimas (informacija apie prekės ženklą) viename PDF lape.</div>
+          </div>
           <strong>50 €</strong>
         </div>
-      </div>
-
-      <p class="pricing-note"><strong>Domenas</strong> — tai tavo svetainės adresas internete (pvz. <em>tavoverslas.lt</em>), kainuoja ~12 €/metai. Arba padedu jį įsigyti (toliau už jį moki pati), arba nusiperki pati ir suteiki man prisijungimus, kad sutvarkyčiau svetainę.</p>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section id="portfelis">
-    <div class="portfelis-header fade-in">
-      <p class="section-label">Atlikti darbai</p>
-      <h2>Darbai, kurie <em>kalba</em> už save.</h2>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-card fade-in">
-        <span class="portfolio-card-num">01</span>
-        <div class="portfolio-card-label">Netrukus</div>
-        <div class="portfolio-card-sub">Pirmas projektas</div>
-      </div>
-      <div class="portfolio-card fade-in fade-in-delay-1">
-        <span class="portfolio-card-num">02</span>
-        <div class="portfolio-card-label">Netrukus</div>
-        <div class="portfolio-card-sub">Antras projektas</div>
-      </div>
-      <div class="portfolio-card fade-in fade-in-delay-2">
-        <span class="portfolio-card-num">03</span>
-        <div class="portfolio-card-label">Netrukus</div>
-        <div class="portfolio-card-sub">Trečias projektas</div>
       </div>
     </div>
   </section>
@@ -1188,46 +1216,11 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="atsiliepimai">
-    <div class="atsiliepimai-header fade-in">
-      <p class="section-label">Atsiliepimai</p>
-      <h2>Ką sako <em>klientai</em>.</h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card placeholder fade-in">
-        <div class="testimonial-quote-mark" aria-hidden="true">„</div>
-        <p class="testimonial-text">Čia atsiras tikras kliento atsiliepimas — jo žodžiai apie tai, kaip sekėsi dirbti kartu.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-name">Kliento vardas</div>
-          <div class="testimonial-role">Verslo pavadinimas</div>
-        </div>
-      </div>
-      <div class="testimonial-card placeholder fade-in fade-in-delay-1">
-        <div class="testimonial-quote-mark" aria-hidden="true">„</div>
-        <p class="testimonial-text">Vieta antrajam atsiliepimui — apie procesą, rezultatą ar jausmą dirbant su tavimi.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-name">Kliento vardas</div>
-          <div class="testimonial-role">Verslo pavadinimas</div>
-        </div>
-      </div>
-      <div class="testimonial-card placeholder fade-in fade-in-delay-2">
-        <div class="testimonial-quote-mark" aria-hidden="true">„</div>
-        <p class="testimonial-text">Trečioji vieta — puiki rekomendacija būsimiems klientams.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-name">Kliento vardas</div>
-          <div class="testimonial-role">Verslo pavadinimas</div>
-        </div>
-      </div>
-    </div>
-    <p class="atsiliepimai-note fade-in">* Vietos paruoštos — čia kelsime tikrus tavo klientų atsiliepimus.</p>
-  </section>
-
   <!-- FAQ / D.U.K. -->
   <section id="duk">
     <div class="duk-header fade-in">
       <p class="section-label">D.U.K.</p>
-      <h2>Dažni <em>klausimai</em>.</h2>
+      <h2>Dažniausiai užduodami <em>klausimai</em>.</h2>
     </div>
     <div class="faq-list">
       <details class="faq-item fade-in">
@@ -1282,7 +1275,11 @@
 
       <div class="calendly-inline-widget" data-url="https://calendly.com/ingridakuria/nemokamas-pazintinis-skambutis?primary_color=b5274a" style="min-width:320px;height:700px;"></div>
 
-      <p class="contact-email-alt">Nemėgsti skambučių? Rašyk tiesiai: <a href="mailto:ingridakuria@gmail.com">ingridakuria@gmail.com</a></p>
+      <div class="contact-alt">
+        <div class="contact-or"><span>arba</span></div>
+        <p class="contact-alt-text">Labiau patogu raštu? Parašyk man tiesiogiai — atsakysiu per 1–2 darbo dienas.</p>
+        <a href="mailto:ingridakuria@gmail.com" class="btn btn-light">Parašyk el. laišką</a>
+      </div>
     </div>
   </section>
 
