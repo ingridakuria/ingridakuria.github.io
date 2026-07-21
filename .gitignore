@@ -7,3 +7,6 @@ Thumbs.db
 
 # Node (not used by the site, but just in case)
 node_modules/
+
+# Originalūs (nesuspausti) portfolio failai — naudojam suspaustus images/mergvakario-feja/
+images/mergvakario feja/

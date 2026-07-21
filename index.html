@@ -597,11 +597,21 @@
       color: var(--charcoal);
     }
     .offer-domain strong { color: var(--lavender-deep); font-weight: 500; }
+    .pricing-photo { position: relative; }
+    .pricing-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      object-fit: cover;
+      object-position: 60% center;
+      display: block;
+    }
     .pricing-callouts {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
+      max-width: 1040px;
+      margin-top: 1.8rem;
     }
     .pricing-callout {
       background: var(--lavender-pale);
@@ -673,6 +683,38 @@
       max-width: 1360px;
       margin: 0 auto 4rem;
     }
+    .portfolio-project {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .portfolio-media { display: flex; flex-direction: column; gap: 0.9rem; }
+    .portfolio-visual {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(74,27,56,0.18);
+      border: 1px solid rgba(0,0,0,0.06);
+      background: #fff;
+      text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .portfolio-visual:hover { transform: translateY(-4px); box-shadow: 0 30px 85px rgba(74,27,56,0.26); }
+    .portfolio-video { width: 100%; height: 430px; object-fit: cover; object-position: top center; display: block; background: var(--cream); }
+    .portfolio-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
+    .portfolio-thumbs img { width: 100%; height: 90px; object-fit: cover; object-position: top center; border-radius: 6px; border: 1px solid rgba(0,0,0,0.06); display: block; }
+    .browser-bar { height: 36px; background: #efe9e0; display: flex; align-items: center; gap: 7px; padding: 0 14px; }
+    .browser-bar .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .browser-url { margin-left: 8px; font-size: 0.72rem; color: var(--charcoal-light); background: #fff; border-radius: 20px; padding: 3px 12px; }
+    .proj-type { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender-deep); font-weight: 500; margin-bottom: 0.8rem; }
+    .portfolio-info h3 { font-family: var(--font-display); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 600; line-height: 1.05; margin-bottom: 1rem; }
+    .portfolio-info > p { color: var(--charcoal-light); line-height: 1.7; margin-bottom: 1.4rem; }
+    .proj-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.8rem; }
+    .proj-list li { display: flex; gap: 0.6rem; font-size: 0.95rem; color: var(--charcoal); }
+    .proj-list li::before { content: '✓'; color: var(--lavender); font-weight: 600; flex-shrink: 0; }
     .portfolio-grid {
       max-width: 1360px;
       margin: 0 auto;
@@ -933,6 +975,10 @@
       text-align: center;
       margin-top: 0.5rem;
     }
+    .form-status { text-align: center; font-size: 0.92rem; color: var(--lavender); margin-top: 0.6rem; min-height: 1.2em; }
+    .contact-email-alt { margin-top: 2rem; font-size: 0.85rem; color: rgba(250,248,245,0.5); text-align: center; }
+    .contact-email-alt a { color: var(--lavender); text-decoration: none; }
+    .contact-email-alt a:hover { text-decoration: underline; }
     .btn-light {
       background: var(--lavender);
       color: var(--white);
@@ -1016,10 +1062,12 @@
       .problema-right { padding-top: 0; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-project { grid-template-columns: 1fr; gap: 2.5rem; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .apie-grid { grid-template-columns: 1fr; gap: 3rem; }
       .paslaugos-header { flex-direction: column; align-items: flex-start; }
       .pricing-layout { grid-template-columns: 1fr; }
+      .pricing-callouts { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
@@ -1053,6 +1101,7 @@
     <a href="#" class="nav-logo">Ingrida Kuria</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#paslaugos" onclick="closeMenu()">Paslaugos</a></li>
+      <li><a href="#portfelis" onclick="closeMenu()">Atlikti darbai</a></li>
       <li><a href="#apie" onclick="closeMenu()">Apie</a></li>
       <li><a href="#kontaktai" onclick="closeMenu()">Kontaktai</a></li>
     </ul>
@@ -1156,7 +1205,7 @@
       <div class="pricing-layout">
         <div class="offer-card">
           <div class="offer-name">Vienkartinis</div>
-          <div class="offer-price">111 €</div>
+          <div class="offer-price">150 €</div>
           <div class="offer-price-note">vienkartinis mokestis · pakeitimai 15 €/val. pagal poreikį</div>
           <ul class="offer-list">
             <li>Modernios svetainės sukūrimas</li>
@@ -1170,10 +1219,14 @@
           </div>
         </div>
 
-        <div class="pricing-callouts">
-          <blockquote class="pricing-callout">Svetainę kuriu individualiai — ne pagal šabloną. Visus pakeitimus atlieku aš, tad tau nereikia nieko mokytis ar gilintis į techniką.</blockquote>
-          <blockquote class="pricing-callout">Jei nusimato dažnesnių pakeitimų — pasiūlysiu nuolatinės priežiūros planą su mėnesiniu mokesčiu.</blockquote>
+        <div class="pricing-photo">
+          <img src="images/DSC08460.jpg" alt="Ingrida Kuria kuria svetaines" loading="lazy" decoding="async" />
         </div>
+      </div>
+
+      <div class="pricing-callouts">
+        <blockquote class="pricing-callout">Svetainę kuriu individualiai — ne pagal šabloną. Visus pakeitimus atlieku aš, tad tau nereikia nieko mokytis ar gilintis į techniką.</blockquote>
+        <blockquote class="pricing-callout">Jei nusimato dažnesnių pakeitimų — pasiūlysiu nuolatinės priežiūros planą su mėnesiniu mokesčiu.</blockquote>
       </div>
 
       <div class="pricing-addons">
@@ -1185,6 +1238,46 @@
           </div>
           <strong>50 €</strong>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfelis">
+    <div class="portfelis-header fade-in">
+      <p class="section-label">Atlikti darbai</p>
+      <h2>Darbai, kurie <em>kalba</em> už save.</h2>
+    </div>
+    <div class="portfolio-project fade-in">
+      <div class="portfolio-media">
+        <a class="portfolio-visual" href="https://www.mergvakariofeja.lt" target="_blank" rel="noopener">
+          <div class="browser-bar">
+            <span class="dot" style="background:#f0776a"></span>
+            <span class="dot" style="background:#f5c14f"></span>
+            <span class="dot" style="background:#8fce7a"></span>
+            <span class="browser-url">mergvakariofeja.lt</span>
+          </div>
+          <video class="portfolio-video" src="images/mergvakario-feja/mergvakario-feja-video.mp4" poster="images/mergvakario-feja/mergvakario-feja-1.jpg" muted loop playsinline preload="none"></video>
+        </a>
+        <div class="portfolio-thumbs">
+          <img src="images/mergvakario-feja/mergvakario-feja-1.jpg" alt="Mergvakario fėja — pradžios puslapis" loading="lazy" />
+          <img src="images/mergvakario-feja/mergvakario-feja-2.jpg" alt="Mergvakario fėja — veiklų sekcija" loading="lazy" />
+          <img src="images/mergvakario-feja/mergvakario-feja-3.jpg" alt="Mergvakario fėja — katalogas su filtrais" loading="lazy" />
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <p class="proj-type">Prekės ženklas + platforma</p>
+        <h3>Mergvakario fėja</h3>
+        <p>Platforma, jungianti moteris, ieškančias mergvakarių veiklų ir dovanų, su jų tiekėjomis — patogi, aiški erdvė vietoj chaotiškų Facebook grupių.</p>
+        <ul class="proj-list">
+          <li>Prekės ženklas nuo nulio (logotipas, spalvos, šriftai)</li>
+          <li>7 puslapiai su aiškia struktūra</li>
+          <li>Veiklų ir dovanų katalogas su filtravimu</li>
+          <li>Atskiri tiekėjų puslapiai</li>
+          <li>Sukurti automatizacijos procesai tiekėjams įkelti</li>
+          <li>Pritaikyta telefonui · SEO pagrindai</li>
+        </ul>
+        <a href="https://www.mergvakariofeja.lt" target="_blank" rel="noopener" class="btn">Peržiūrėti svetainę →</a>
       </div>
     </div>
   </section>
@@ -1271,15 +1364,33 @@
     <div class="kontaktai-inner">
       <p class="section-label">Kontaktai</p>
       <h2>Pradėkime<br /><em>pokalbį.</em></h2>
-      <p class="kontaktai-sub">Pasirink tau patogų laiką nemokamam 30 min pokalbiui — be jokių įsipareigojimų. Kartu išsiaiškinsim, ko tavo verslui reikia.</p>
+      <p class="kontaktai-sub">Parašyk man, ir kartu išsiaiškinsim, ko tavo verslui reikia. Atsakysiu per 1–2 darbo dienas. 💛</p>
 
-      <div class="calendly-inline-widget" data-url="https://calendly.com/ingridakuria/nemokamas-pazintinis-skambutis?primary_color=b5274a" style="min-width:320px;height:700px;"></div>
+      <form class="contact-form" id="contactForm">
+        <input type="hidden" name="access_key" value="7b9387a3-2603-402e-b05a-7ffbe99fb216" />
+        <input type="hidden" name="subject" value="Nauja užklausa iš ingridakuria.lt" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vardas">Vardas</label>
+            <input type="text" id="vardas" name="Vardas" placeholder="Tavo vardas" required />
+          </div>
+          <div class="form-group">
+            <label for="el-pastas">El. paštas</label>
+            <input type="email" id="el-pastas" name="El. paštas" placeholder="tavo@pastas.lt" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="zinute">Žinutė</label>
+          <textarea id="zinute" name="Žinutė" rows="5" placeholder="Papasakok apie savo verslą ir ko norėtum..." required></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-light">Siųsti žinutę</button>
+        </div>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
+      </form>
 
-      <div class="contact-alt">
-        <div class="contact-or"><span>arba</span></div>
-        <p class="contact-alt-text">Labiau patogu raštu? Parašyk man tiesiogiai — atsakysiu per 1–2 darbo dienas.</p>
-        <a href="mailto:ingridakuria@gmail.com" class="btn btn-light">Parašyk el. laišką</a>
-      </div>
+      <p class="contact-email-alt">Arba tiesiogiai: <a href="mailto:ingridakuria@gmail.com">ingridakuria@gmail.com</a></p>
     </div>
   </section>
 
@@ -1306,9 +1417,6 @@
       </a>
     </div>
   </footer>
-
-  <!-- Calendly -->
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
   <script>
     // Nav scroll effect
@@ -1357,19 +1465,47 @@
     }, { threshold: 0.4 });
     sections.forEach(s => sectionObserver.observe(s));
 
-    // Contact form
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button[type=submit]');
-      btn.textContent = 'Išsiųsta! ✓';
-      btn.style.background = 'var(--lavender-deep)';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Siųsti žinutę';
-        btn.style.background = '';
+    // Portfolio video — play only when visible
+    const portfolioVideo = document.querySelector('.portfolio-video');
+    if (portfolioVideo) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { portfolioVideo.play().catch(() => {}); }
+          else { portfolioVideo.pause(); }
+        });
+      }, { threshold: 0.25 });
+      videoObserver.observe(portfolioVideo);
+    }
+
+    // Contact form (Web3Forms)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = contactForm.querySelector('button[type=submit]');
+        const status = document.getElementById('formStatus');
+        btn.disabled = true;
+        btn.textContent = 'Siunčiama…';
+        status.textContent = '';
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(contactForm)
+          });
+          const data = await res.json();
+          if (data.success) {
+            status.textContent = 'Ačiū! Žinutė išsiųsta — netrukus atsakysiu. 💛';
+            contactForm.reset();
+          } else {
+            status.textContent = 'Nepavyko išsiųsti. Parašyk tiesiai: ingridakuria@gmail.com';
+          }
+        } catch (err) {
+          status.textContent = 'Nepavyko išsiųsti. Parašyk tiesiai: ingridakuria@gmail.com';
+        }
         btn.disabled = false;
-        e.target.reset();
-      }, 4000);
+        btn.textContent = 'Siųsti žinutę';
+      });
     }
   </script>
 </body>
