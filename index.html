@@ -536,15 +536,18 @@
 
     /* ── PROCESS ── */
     .process-wrap { max-width: 1360px; margin: 0 auto; }
-    .process-list { list-style: none; max-width: 840px; }
+    .process-list {
+      list-style: none;
+      max-width: 1040px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem 3rem;
+    }
     .process-step {
       display: flex;
-      gap: 1.5rem;
-      padding: 1.6rem 0;
-      border-bottom: 1px solid var(--beige);
+      gap: 1.1rem;
       align-items: flex-start;
     }
-    .process-step:last-child { border-bottom: none; }
     .process-num {
       font-family: var(--font-display);
       font-size: 1.9rem;
@@ -910,6 +913,35 @@
       line-height: 1.75;
     }
 
+    /* ── KAINODARA ── */
+    #kainodara { background: var(--beige); }
+    .kainodara-header { max-width: 1360px; margin: 0 auto 3rem; }
+    .kainos-table-wrap { max-width: 1120px; margin: 0 auto; overflow-x: auto; }
+    .kainos-table { width: 100%; min-width: 720px; border-collapse: collapse; background: var(--white); }
+    .kainos-table th, .kainos-table td {
+      text-align: left;
+      padding: 1.1rem 1.3rem;
+      border-bottom: 1px solid var(--beige);
+      vertical-align: top;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .kainos-table thead th {
+      background: var(--lavender-pale);
+      color: var(--lavender-deep);
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: none;
+    }
+    .kainos-table td strong { color: var(--charcoal); font-weight: 500; }
+    .kainos-table .kaina { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--lavender); white-space: nowrap; }
+    .kainos-table .kaina-sub { font-size: 0.85rem; color: var(--charcoal-light); }
+    .kainos-table tbody tr:hover { background: var(--cream); }
+    .kainos-note { max-width: 1120px; margin: 1.4rem auto 0; font-size: 0.9rem; color: var(--charcoal-light); line-height: 1.6; }
+    .kainos-note strong { color: var(--lavender-deep); font-weight: 500; }
+
     /* ── CONTACT ── */
     #kontaktai { background: var(--plum); color: var(--cream); }
     .kontaktai-inner {
@@ -1068,6 +1100,7 @@
       .paslaugos-header { flex-direction: column; align-items: flex-start; }
       .pricing-layout { grid-template-columns: 1fr; }
       .pricing-callouts { grid-template-columns: 1fr; }
+      .process-list { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
@@ -1090,6 +1123,13 @@
       .services-grid { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: 1fr; }
       .calendly-inline-widget { height: 1000px !important; }
+      .kainos-table { min-width: 0; }
+      .kainos-table thead { display: none; }
+      .kainos-table, .kainos-table tbody, .kainos-table tr, .kainos-table td { display: block; width: 100%; }
+      .kainos-table tr { background: var(--white); border: 1px solid var(--beige); border-radius: 8px; margin-bottom: 1rem; }
+      .kainos-table td { border-bottom: 1px solid var(--beige); }
+      .kainos-table td:last-child { border-bottom: none; }
+      .kainos-table td::before { content: attr(data-label); display: block; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lavender-deep); margin-bottom: 0.25rem; }
       .footer { flex-direction: column; text-align: center; }
     }
   </style>
@@ -1103,6 +1143,7 @@
       <li><a href="#paslaugos" onclick="closeMenu()">Paslaugos</a></li>
       <li><a href="#portfelis" onclick="closeMenu()">Atlikti darbai</a></li>
       <li><a href="#apie" onclick="closeMenu()">Apie</a></li>
+      <li><a href="#kainodara" onclick="closeMenu()">Kainos</a></li>
       <li><a href="#kontaktai" onclick="closeMenu()">Kontaktai</a></li>
     </ul>
     <button class="burger" id="burger" aria-label="Meniu" onclick="toggleMenu()">
@@ -1156,7 +1197,7 @@
           <span class="process-num">01</span>
           <div>
             <h3>Nemokamas pažintinis skambutis</h3>
-            <p>30 min — trumpai aptariame tavo poreikį ir lūkesčius.</p>
+            <p>15 min — trumpai aptariame tavo poreikį ir lūkesčius.</p>
           </div>
         </li>
         <li class="process-step fade-in">
@@ -1176,8 +1217,8 @@
         <li class="process-step fade-in">
           <span class="process-num">04</span>
           <div>
-            <h3>Korekcijų skambutis</h3>
-            <p>15 min — peržiūrime kartu, pasidalini pastabomis ir pataisymais.</p>
+            <h3>Korekcijos</h3>
+            <p>Duodu tau kelias dienas apžiūrėti ir susigyventi su svetaine. Tada raštu atsiunti pastabas ir pageidavimus, ką pakeisti.</p>
           </div>
         </li>
         <li class="process-step fade-in">
@@ -1196,49 +1237,6 @@
         </li>
       </ol>
       <p class="process-duration">Projekto trukmė: <strong>1–2 savaitės</strong>, priklausomai nuo komunikacijos efektyvumo.</p>
-    </div>
-
-    <div class="pricing fade-in">
-      <p class="section-label">Kainodara</p>
-      <h3 class="pricing-title">Paprasta ir aiški kaina</h3>
-
-      <div class="pricing-layout">
-        <div class="offer-card">
-          <div class="offer-name">Vienkartinis</div>
-          <div class="offer-price">150 €</div>
-          <div class="offer-price-note">vienkartinis mokestis · pakeitimai 15 €/val. pagal poreikį</div>
-          <ul class="offer-list">
-            <li>Modernios svetainės sukūrimas</li>
-            <li>Hostingas įskaičiuotas</li>
-            <li>Tekstai svetainei — sukurti pagal tavo prekės ženklą</li>
-            <li>Pritaikyta telefonui ir kompiuteriui</li>
-            <li>SEO pagrindai — kad lengviau rastų Google</li>
-          </ul>
-          <div class="offer-domain">
-            <strong>Domeno kaina neįskaičiuota.</strong> Domenas — tai tavo adresas internete (pvz. <em>tavoverslas.lt</em>), ~12 €/metai. Juo pasirūpinu aš arba nusiperki pati ir suteiki man prisijungimus.
-          </div>
-        </div>
-
-        <div class="pricing-photo">
-          <img src="images/DSC08460.jpg" alt="Ingrida Kuria kuria svetaines" loading="lazy" decoding="async" />
-        </div>
-      </div>
-
-      <div class="pricing-callouts">
-        <blockquote class="pricing-callout">Svetainę kuriu individualiai — ne pagal šabloną. Visus pakeitimus atlieku aš, tad tau nereikia nieko mokytis ar gilintis į techniką.</blockquote>
-        <blockquote class="pricing-callout">Jei nusimato dažnesnių pakeitimų — pasiūlysiu nuolatinės priežiūros planą su mėnesiniu mokesčiu.</blockquote>
-      </div>
-
-      <div class="pricing-addons">
-        <p class="section-label">Papildomos paslaugos</p>
-        <div class="pricing-addon">
-          <div>
-            <div class="addon-q">Neturi brandbook'o (vizualinių prekės ženklo gairių)? Ne bėda!</div>
-            <div class="addon-desc">Prekės ženklo / vizualinio identiteto sukūrimas — logotipas, spalvų paletė, šriftai ir pozicionavimas (informacija apie prekės ženklą) viename PDF lape.</div>
-          </div>
-          <strong>50 €</strong>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1357,6 +1355,68 @@
         <div class="faq-answer">Taip — kiekvieną svetainę pritaikau visiems ekranams: telefonui, planšetei ir kompiuteriui. Šiandien dauguma lankytojų naršo telefonu, todėl tai būtina.</div>
       </details>
     </div>
+  </section>
+
+  <!-- KAINODARA -->
+  <section id="kainodara">
+    <div class="kainodara-header fade-in">
+      <p class="section-label">Kainodara</p>
+      <h2>Kuriu <em>prieinamus</em> sprendimus.</h2>
+    </div>
+
+    <div class="kainos-table-wrap fade-in">
+      <table class="kainos-table">
+        <thead>
+          <tr>
+            <th>Paslauga</th>
+            <th>Kas įeina</th>
+            <th>Kaina</th>
+            <th>Kam tinka</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Paslauga"><strong>Paprasta svetainė</strong></td>
+            <td data-label="Kas įeina">2–3 puslapiai, be didesnių funkcionalumų. Veikia kaip vizitinė kortelė informacijai pateikti.</td>
+            <td data-label="Kaina"><span class="kaina">100 €</span></td>
+            <td data-label="Kam tinka">Kam reikia aiškaus, patikimo buvimo internete — kontaktai ir info vienoje vietoje. Puiku pradžiai.</td>
+          </tr>
+          <tr>
+            <td data-label="Paslauga"><strong>Sudėtingesnė svetainė</strong></td>
+            <td data-label="Kas įeina">4–6 puslapiai su platesniu turiniu ir aiškia struktūra.</td>
+            <td data-label="Kaina"><span class="kaina">150 €</span></td>
+            <td data-label="Kam tinka">Augantiems verslams, kuriems reikia daugiau — atskirų paslaugų, darbų ar istorijos puslapių.</td>
+          </tr>
+          <tr>
+            <td data-label="Paslauga"><strong>Funkcionalumai</strong></td>
+            <td data-label="Kas įeina">Naujienlaiškio prenumerata, kalendorius / rezervacijos ir kt.</td>
+            <td data-label="Kaina"><span class="kaina">20 €</span> <span class="kaina-sub">/ funkcija</span></td>
+            <td data-label="Kam tinka">Kam reikia, kad svetainė ne tik informuotų, bet ir „veiktų" — rinktų prenumeratorius ar priimtų rezervacijas.</td>
+          </tr>
+          <tr>
+            <td data-label="Paslauga"><strong>Vizualinis identitetas</strong></td>
+            <td data-label="Kas įeina">Logotipas, spalvų paletė, šriftai ir pozicionavimas — viename PDF lape.</td>
+            <td data-label="Kaina"><span class="kaina">50 €</span></td>
+            <td data-label="Kam tinka">Kas dar neturi prekės ženklo — sukuriame jį nuo nulio.</td>
+          </tr>
+          <tr>
+            <td data-label="Paslauga"><strong>Pakeitimai</strong> <span class="kaina-sub">(vienkartiniai)</span></td>
+            <td data-label="Kas įeina">Individualūs pataisymai pagal poreikį — atlieku aš.</td>
+            <td data-label="Kaina"><span class="kaina">15 €</span></td>
+            <td data-label="Kam tinka">Kam reikia keisti retai — moki tik tada, kai ko nors prireikia.</td>
+          </tr>
+          <tr>
+            <td data-label="Paslauga"><strong>Mėnesinė priežiūra</strong></td>
+            <td data-label="Kas įeina">Nuolatiniai atnaujinimai ir pakeitimai, svetainės priežiūra.</td>
+            <td data-label="Kaina"><span class="kaina">30 €</span> <span class="kaina-sub">/ mėn.</span></td>
+            <td data-label="Kam tinka">Kam nuolat ką nors pridėti — svetainė visada šviežia, o tau nereikia galvoti.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="kainos-note fade-in"><strong>Svarbu:</strong> svetainę kuriu individualiai, todėl visus pakeitimus atlieku aš — tau nereikia nieko mokytis ar gilintis į techniką.</p>
+    <p class="kainos-note fade-in"><strong>Domenas</strong> neįskaičiuotas — tai tavo adresas internete (pvz. <em>tavoverslas.lt</em>), ~12 €/metai. Juo pasirūpinu aš arba nusiperki pati ir suteiki man prisijungimus.</p>
   </section>
 
   <!-- CONTACT -->
