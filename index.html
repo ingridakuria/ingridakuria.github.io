@@ -1314,7 +1314,7 @@
           </a>
           <div class="phone-mockup" aria-hidden="true">
             <span class="phone-speaker"></span>
-            <video class="phone-video" src="images/mergvakario-feja/mergvakario-feja-mobile.mp4" muted loop playsinline preload="none"></video>
+            <video class="phone-video" src="images/mergvakario-feja/mergvakario-feja-mobile.mp4" poster="images/mergvakario-feja/mergvakario-feja-mobile-poster.jpg" muted loop playsinline preload="none"></video>
           </div>
         </div>
       </div>
@@ -1619,16 +1619,17 @@
     }, { threshold: 0.4 });
     sections.forEach(s => sectionObserver.observe(s));
 
-    // Portfolio videos (desktop + phone) — play only when visible
-    const portfolioVideos = document.querySelectorAll('#portfelis video');
-    if (portfolioVideos.length) {
-      const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.play().catch(() => {}); }
-          else { e.target.pause(); }
-        });
-      }, { threshold: 0.25 });
-      portfolioVideos.forEach(v => videoObserver.observe(v));
+    // Portfolio videos (desktop + phone) — load & play on hover only.
+    // On touch devices (no hover) they stay as static posters, saving data.
+    const portfolioShowcase = document.querySelector('.portfolio-showcase');
+    if (portfolioShowcase) {
+      const vids = portfolioShowcase.querySelectorAll('video');
+      portfolioShowcase.addEventListener('mouseenter', () => {
+        vids.forEach(v => v.play().catch(() => {}));
+      });
+      portfolioShowcase.addEventListener('mouseleave', () => {
+        vids.forEach(v => v.pause());
+      });
     }
 
     // Contact form (Web3Forms)
