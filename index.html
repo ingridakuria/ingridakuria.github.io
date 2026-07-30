@@ -391,16 +391,17 @@
     }
     .problema-grid {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
+      grid-template-columns: 1.1fr 0.72fr;
       gap: 0;
       align-items: stretch;
       max-width: none;
       margin: 0;
     }
     .problema-left {
-      padding: clamp(3.5rem, 5vw, 5rem) clamp(1.8rem, 5vw, 6rem);
+      padding: clamp(3.5rem, 5vw, 5rem) clamp(2.5rem, 3.5vw, 4rem) clamp(3.5rem, 5vw, 5rem) clamp(2rem, 5vw, 5rem);
       align-self: center;
       max-width: 760px;
+      margin-left: auto;
     }
     .problema-left h2 { color: var(--cream); }
     .problema-left h2 em { color: var(--coral); }
@@ -1215,6 +1216,7 @@
       <li><a href="#paslaugos" onclick="closeMenu()">Paslaugos</a></li>
       <li><a href="#portfelis" onclick="closeMenu()">Atlikti darbai</a></li>
       <li><a href="#kainodara" onclick="closeMenu()">Kainos</a></li>
+      <li><a href="duk.html" onclick="closeMenu()">D.U.K.</a></li>
       <li><a href="#kontaktai" onclick="closeMenu()">Kontaktai</a></li>
     </ul>
     <button class="burger" id="burger" aria-label="Meniu" onclick="toggleMenu()">
@@ -1310,7 +1312,7 @@
           </a>
           <div class="phone-mockup" aria-hidden="true">
             <span class="phone-speaker"></span>
-            <video class="phone-video" src="images/mergvakario-feja/mergvakario-feja-mobile.mp4" poster="images/mergvakario-feja/mergvakario-feja-mobile-poster.jpg" muted loop playsinline preload="none"></video>
+            <video class="phone-video" src="images/mergvakario-feja/mergvakario-feja-mobile.mp4#t=0.1" muted loop playsinline preload="metadata"></video>
           </div>
         </div>
       </div>
@@ -1455,7 +1457,7 @@
   <footer>
     <a href="#" class="footer-logo">Ingrida Kuria</a>
     <div class="footer-center">
-      <span>© 2026 · Matomas verslas. Žmogiškas požiūris.</span>
+      <span>© 2026 · Svetainių kūrimas pradedančiam ir smulkiam verslui visoje Lietuvoje</span>
       <a href="duk.html" class="footer-link">D.U.K.</a>
       <a href="privatumo-politika.html" class="footer-link">Privatumo politika</a>
     </div>
