@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ingrida Kuria — svetainių kūrimas pradedantiems verslams | Vilnius</title>
-  <meta name="description" content="Kuriu modernias, žmogiškas svetaines pradedantiems verslams — greičiau ir prieinamiau, su dirbtinio intelekto pagalba. Vilnius, Lietuva." />
+  <title>Svetainių kūrimas pradedančiam verslui | Ingrida Kuria</title>
+  <meta name="description" content="Svetainių kūrimas pradedančiam ir smulkiam verslui visoje Lietuvoje — greitai, prieinamai ir individualiai, nuo 100 €. Susisiek ir aptarkime tavo svetainės idėją." />
+  <meta name="keywords" content="svetainių kūrimas, internetinės svetainės kūrimas, svetainė pradedančiam verslui, svetainė smulkiam verslui, web dizainerė, svetainių kūrėja, svetainės kaina, Lietuva" />
   <meta name="author" content="Ingrida Kuria" />
   <meta name="theme-color" content="#2F2350" />
   <link rel="canonical" href="https://ingridakuria.lt/" />
@@ -15,16 +16,16 @@
   <meta property="og:locale" content="lt_LT" />
   <meta property="og:site_name" content="Ingrida Kuria" />
   <meta property="og:url" content="https://ingridakuria.lt/" />
-  <meta property="og:title" content="Ingrida Kuria — svetainių kūrimas pradedantiems verslams" />
-  <meta property="og:description" content="Modernios, žmogiškos svetainės pradedantiems verslams — greičiau ir prieinamiau, su dirbtinio intelekto pagalba. Vilnius." />
+  <meta property="og:title" content="Svetainių kūrimas pradedančiam verslui | Ingrida Kuria" />
+  <meta property="og:description" content="Svetainių kūrimas pradedančiam ir smulkiam verslui visoje Lietuvoje — greitai, prieinamai ir individualiai, nuo 100 €." />
   <meta property="og:image" content="https://ingridakuria.lt/images/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Ingrida Kuria — svetainių kūrimas pradedantiems verslams" />
-  <meta name="twitter:description" content="Modernios, žmogiškos svetainės pradedantiems verslams — su dirbtinio intelekto pagalba. Vilnius." />
+  <meta name="twitter:title" content="Svetainių kūrimas pradedančiam verslui | Ingrida Kuria" />
+  <meta name="twitter:description" content="Svetainių kūrimas pradedančiam ir smulkiam verslui visoje Lietuvoje — greitai, prieinamai ir individualiai." />
   <meta name="twitter:image" content="https://ingridakuria.lt/images/og-image.jpg" />
 
   <!-- Struktūriniai duomenys (Google supranta, kas tu esi) -->
@@ -33,19 +34,29 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Ingrida Kuria",
-    "description": "Svetainių kūrimas pradedantiems verslams su dirbtinio intelekto pagalba.",
+    "description": "Svetainių kūrimas pradedančiam ir smulkiam verslui visoje Lietuvoje — greitai, prieinamai ir individualiai.",
     "url": "https://ingridakuria.lt/",
     "image": "https://ingridakuria.lt/images/og-image.jpg",
     "email": "ingridakuria@gmail.com",
-    "founder": { "@type": "Person", "name": "Ingrida Kuria" },
+    "founder": { "@type": "Person", "name": "Ingrida Kuria", "jobTitle": "Web dizainerė" },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Vilnius",
       "addressCountry": "LT"
     },
-    "areaServed": "Lietuva",
-    "knowsAbout": ["svetainių kūrimas", "web dizainas", "skaitmeninė rinkodara", "dirbtinis intelektas"],
-    "priceRange": "€€"
+    "areaServed": { "@type": "Country", "name": "Lietuva" },
+    "serviceType": "Svetainių kūrimas",
+    "knowsAbout": ["svetainių kūrimas", "internetinės svetainės", "web dizainas", "svetainė pradedančiam verslui", "svetainė smulkiam verslui", "SEO", "vizualinis identitetas"],
+    "priceRange": "€€",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Svetainių kūrimo paslaugos",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Paprasta svetainė (2–3 puslapiai)" }, "price": "100", "priceCurrency": "EUR" },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sudėtingesnė svetainė (4–6 puslapiai)" }, "price": "150", "priceCurrency": "EUR" },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vizualinis identitetas" }, "price": "50", "priceCurrency": "EUR" }
+      ]
+    }
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -465,10 +476,17 @@
       max-width: 1360px;
       margin: 0 auto 3.5rem;
     }
+    .paslaugos-lead {
+      max-width: 660px;
+      color: var(--charcoal-light);
+      margin-top: 1.3rem;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
     .paslaugos-intro {
       max-width: 580px;
       color: var(--charcoal-light);
-      margin-top: 1.3rem;
+      margin-top: 1rem;
       font-size: 1.02rem;
     }
     .services-grid {
@@ -1219,6 +1237,7 @@
     <div class="paslaugos-header fade-in">
       <p class="section-label">Paslaugos</p>
       <h2>Tavo internetinė svetainė — <em>paprastai, greitai ir prieinamai!</em></h2>
+      <p class="paslaugos-lead">Kuriu internetines svetaines pradedančiam ir smulkiam verslui visoje Lietuvoje — individualiai, be šablonų ir be mėnesių laukimo.</p>
       <p class="paslaugos-intro">Kaip atrodo procesas:</p>
     </div>
 
