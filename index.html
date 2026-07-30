@@ -695,6 +695,33 @@
       align-items: start;
     }
     .portfolio-media { display: flex; flex-direction: column; gap: 0.9rem; }
+    .portfolio-showcase { position: relative; }
+    .phone-mockup {
+      position: absolute;
+      right: -14px;
+      bottom: -32px;
+      width: 158px;
+      padding: 14px 8px 10px;
+      background: #14121a;
+      border-radius: 26px;
+      box-shadow: 0 22px 48px rgba(20,18,26,0.4);
+      z-index: 3;
+    }
+    .phone-speaker {
+      position: absolute;
+      top: 6px; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 4px; border-radius: 4px;
+      background: rgba(255,255,255,0.28);
+    }
+    .phone-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 16px;
+      background: #000;
+    }
     .portfolio-visual {
       display: block;
       border-radius: 12px;
@@ -1119,6 +1146,7 @@
       .services-grid { grid-template-columns: 1fr 1fr; }
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
       .portfolio-project { grid-template-columns: 1fr; gap: 2.5rem; }
+      .phone-mockup { width: 138px; right: 4px; bottom: -26px; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .apie-grid { grid-template-columns: 1fr; gap: 3rem; }
       .paslaugos-header { flex-direction: column; align-items: flex-start; }
@@ -1146,6 +1174,8 @@
       .burger { display: flex; z-index: 101; }
       .services-grid { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: 1fr; }
+      .phone-mockup { width: 116px; right: 2px; bottom: -20px; padding: 11px 6px 8px; border-radius: 22px; }
+      .phone-speaker { width: 32px; top: 5px; }
       .calendly-inline-widget { height: 1000px !important; }
       .kainos-table { min-width: 0; }
       .kainos-table thead { display: none; }
@@ -1272,19 +1302,20 @@
     </div>
     <div class="portfolio-project fade-in">
       <div class="portfolio-media">
-        <a class="portfolio-visual" href="https://www.mergvakariofeja.lt" target="_blank" rel="noopener">
-          <div class="browser-bar">
-            <span class="dot" style="background:#f0776a"></span>
-            <span class="dot" style="background:#f5c14f"></span>
-            <span class="dot" style="background:#8fce7a"></span>
-            <span class="browser-url">mergvakariofeja.lt</span>
+        <div class="portfolio-showcase">
+          <a class="portfolio-visual" href="https://www.mergvakariofeja.lt" target="_blank" rel="noopener">
+            <div class="browser-bar">
+              <span class="dot" style="background:#f0776a"></span>
+              <span class="dot" style="background:#f5c14f"></span>
+              <span class="dot" style="background:#8fce7a"></span>
+              <span class="browser-url">mergvakariofeja.lt</span>
+            </div>
+            <video class="portfolio-video" src="images/mergvakario-feja/mergvakario-feja-video.mp4" poster="images/mergvakario-feja/mergvakario-feja-1.jpg" muted loop playsinline preload="none"></video>
+          </a>
+          <div class="phone-mockup" aria-hidden="true">
+            <span class="phone-speaker"></span>
+            <video class="phone-video" src="images/mergvakario-feja/mergvakario-feja-mobile.mp4" muted loop playsinline preload="none"></video>
           </div>
-          <video class="portfolio-video" src="images/mergvakario-feja/mergvakario-feja-video.mp4" poster="images/mergvakario-feja/mergvakario-feja-1.jpg" muted loop playsinline preload="none"></video>
-        </a>
-        <div class="portfolio-thumbs">
-          <img src="images/mergvakario-feja/mergvakario-feja-1.jpg" alt="Mergvakario fėja — pradžios puslapis" loading="lazy" />
-          <img src="images/mergvakario-feja/mergvakario-feja-2.jpg" alt="Mergvakario fėja — veiklų sekcija" loading="lazy" />
-          <img src="images/mergvakario-feja/mergvakario-feja-3.jpg" alt="Mergvakario fėja — katalogas su filtrais" loading="lazy" />
         </div>
       </div>
       <div class="portfolio-info">
@@ -1588,16 +1619,16 @@
     }, { threshold: 0.4 });
     sections.forEach(s => sectionObserver.observe(s));
 
-    // Portfolio video — play only when visible
-    const portfolioVideo = document.querySelector('.portfolio-video');
-    if (portfolioVideo) {
+    // Portfolio videos (desktop + phone) — play only when visible
+    const portfolioVideos = document.querySelectorAll('#portfelis video');
+    if (portfolioVideos.length) {
       const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(e => {
-          if (e.isIntersecting) { portfolioVideo.play().catch(() => {}); }
-          else { portfolioVideo.pause(); }
+          if (e.isIntersecting) { e.target.play().catch(() => {}); }
+          else { e.target.pause(); }
         });
       }, { threshold: 0.25 });
-      videoObserver.observe(portfolioVideo);
+      portfolioVideos.forEach(v => videoObserver.observe(v));
     }
 
     // Contact form (Web3Forms)
