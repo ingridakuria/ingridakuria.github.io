@@ -713,6 +713,11 @@
       gap: 3.5rem;
       align-items: start;
     }
+    .portfolio-project + .portfolio-project {
+      margin-top: 5.5rem;
+      padding-top: 5.5rem;
+      border-top: 1px solid rgba(74,51,116,0.12);
+    }
     .portfolio-media { display: flex; flex-direction: column; gap: 0.9rem; }
     .portfolio-showcase { position: relative; }
     .phone-mockup {
@@ -1331,6 +1336,40 @@
         <a href="https://www.mergvakariofeja.lt" target="_blank" rel="noopener" class="btn">Peržiūrėti svetainę →</a>
       </div>
     </div>
+
+    <div class="portfolio-project fade-in">
+      <div class="portfolio-media">
+        <div class="portfolio-showcase">
+          <a class="portfolio-visual" href="https://jautienosfestivalis.lt" target="_blank" rel="noopener">
+            <div class="browser-bar">
+              <span class="dot" style="background:#f0776a"></span>
+              <span class="dot" style="background:#f5c14f"></span>
+              <span class="dot" style="background:#8fce7a"></span>
+              <span class="browser-url">jautienosfestivalis.lt</span>
+            </div>
+            <video class="portfolio-video" src="images/jautienos-festivalis/jautienos-festivalis-desktop.mp4#t=0.1" muted loop playsinline preload="metadata"></video>
+          </a>
+          <div class="phone-mockup" aria-hidden="true">
+            <span class="phone-speaker"></span>
+            <video class="phone-video" src="images/jautienos-festivalis/jautienos-festivalis-mobile.mp4#t=0.1" muted loop playsinline preload="metadata"></video>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <p class="proj-type">Renginio svetainė</p>
+        <h3>Jautienos festivalis</h3>
+        <p>Ekologiško jautienos festivalio (Leliūnai, Utenos r., 2026) svetainė — renginio „vizitinė", pristatanti programą, festivalio istoriją ir kviečianti dalyvauti.</p>
+        <ul class="proj-list">
+          <li>3 puslapiai: pradžia, programa, festivalio istorija</li>
+          <li>Individualus dizainas pagal prekės ženklą</li>
+          <li>Šriftai su pilnu lietuvišku raidynu</li>
+          <li>Nuotraukų galerijos ir įterptas renginio video</li>
+          <li>Aiškūs raginimai: dalyvauti ir registruotis</li>
+          <li>Pritaikyta telefonui · SEO pagrindai</li>
+        </ul>
+        <a href="https://jautienosfestivalis.lt" target="_blank" rel="noopener" class="btn">Peržiūrėti svetainę →</a>
+      </div>
+    </div>
   </section>
 
   <!-- APIE / KODĖL AŠ (Pažįstama + Apie mane sujungta) -->
@@ -1566,16 +1605,15 @@
 
     // Portfolio videos (desktop + phone) — load & play on hover only.
     // On touch devices (no hover) they stay as static posters, saving data.
-    const portfolioShowcase = document.querySelector('.portfolio-showcase');
-    if (portfolioShowcase) {
-      const vids = portfolioShowcase.querySelectorAll('video');
-      portfolioShowcase.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.portfolio-showcase').forEach((showcase) => {
+      const vids = showcase.querySelectorAll('video');
+      showcase.addEventListener('mouseenter', () => {
         vids.forEach(v => v.play().catch(() => {}));
       });
-      portfolioShowcase.addEventListener('mouseleave', () => {
+      showcase.addEventListener('mouseleave', () => {
         vids.forEach(v => v.pause());
       });
-    }
+    });
 
     // Contact form (Web3Forms)
     const contactForm = document.getElementById('contactForm');
