@@ -705,21 +705,20 @@
       max-width: 1360px;
       margin: 0 auto 4rem;
     }
-    .portfolio-project {
+    .portfolio-works {
       max-width: 1360px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 3.5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem 3rem;
       align-items: start;
     }
-    .portfolio-project + .portfolio-project {
-      margin-top: 5.5rem;
-      padding-top: 5.5rem;
-      border-top: 1px solid rgba(74,51,116,0.12);
+    .portfolio-project {
+      display: flex;
+      flex-direction: column;
     }
     .portfolio-media { display: flex; flex-direction: column; gap: 0.9rem; }
-    .portfolio-showcase { position: relative; }
+    .portfolio-showcase { position: relative; margin-bottom: 2.8rem; }
     .phone-mockup {
       position: absolute;
       right: -14px;
@@ -757,14 +756,14 @@
       transition: transform var(--transition), box-shadow var(--transition);
     }
     .portfolio-visual:hover { transform: translateY(-4px); box-shadow: 0 30px 85px rgba(74,27,56,0.26); }
-    .portfolio-video { width: 100%; height: 430px; object-fit: cover; object-position: top center; display: block; background: var(--cream); }
+    .portfolio-video { width: 100%; height: 300px; object-fit: cover; object-position: top center; display: block; background: var(--cream); }
     .portfolio-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
     .portfolio-thumbs img { width: 100%; height: 90px; object-fit: cover; object-position: top center; border-radius: 6px; border: 1px solid rgba(0,0,0,0.06); display: block; }
     .browser-bar { height: 36px; background: #efe9e0; display: flex; align-items: center; gap: 7px; padding: 0 14px; }
     .browser-bar .dot { width: 10px; height: 10px; border-radius: 50%; }
     .browser-url { margin-left: 8px; font-size: 0.72rem; color: var(--charcoal-light); background: #fff; border-radius: 20px; padding: 3px 12px; }
     .proj-type { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender-deep); font-weight: 500; margin-bottom: 0.8rem; }
-    .portfolio-info h3 { font-family: var(--font-display); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 600; line-height: 1.05; margin-bottom: 1rem; }
+    .portfolio-info h3 { font-family: var(--font-display); font-size: clamp(1.7rem, 2.2vw, 2.3rem); font-weight: 600; line-height: 1.08; margin-bottom: 1rem; }
     .portfolio-info > p { color: var(--charcoal-light); line-height: 1.7; margin-bottom: 1.4rem; }
     .proj-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.8rem; }
     .proj-list li { display: flex; gap: 0.6rem; font-size: 0.95rem; color: var(--charcoal); }
@@ -1169,7 +1168,7 @@
       .problema-right { padding-top: 0; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
-      .portfolio-project { grid-template-columns: 1fr; gap: 2.5rem; }
+      .portfolio-works { grid-template-columns: 1fr; gap: 4.5rem; }
       .phone-mockup { width: 138px; right: 4px; bottom: -26px; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .apie-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -1303,6 +1302,7 @@
       <p class="section-label">Atlikti darbai</p>
       <h2>Darbai, kurie <em>kalba</em> už save.</h2>
     </div>
+    <div class="portfolio-works">
     <div class="portfolio-project fade-in">
       <div class="portfolio-media">
         <div class="portfolio-showcase">
@@ -1369,6 +1369,7 @@
         </ul>
         <a href="https://jautienosfestivalis.lt" target="_blank" rel="noopener" class="btn">Peržiūrėti svetainę →</a>
       </div>
+    </div>
     </div>
   </section>
 
