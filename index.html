@@ -888,10 +888,22 @@
     }
     .testimonials-single {
       max-width: 960px; margin: 0 auto;
-      display: flex; gap: 1.5rem;
+      display: flex; gap: 1.5rem; align-items: flex-start;
       overflow-x: auto; scroll-snap-type: x mandatory;
       padding-bottom: 0.9rem; scrollbar-width: thin;
     }
+    .testimonial-text.clamped {
+      display: -webkit-box; -webkit-line-clamp: 8; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .testimonial-toggle {
+      align-self: flex-start;
+      background: none; border: none; padding: 0;
+      margin-top: -0.2rem;
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+      color: var(--lavender); cursor: pointer; letter-spacing: 0.02em;
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+    .testimonial-toggle:hover { color: var(--lavender-deep); }
     .testimonials-single .testimonial-card {
       flex: 0 0 clamp(255px, 33%, 342px);
       scroll-snap-align: start;
@@ -1720,6 +1732,34 @@
         btn.textContent = 'Siųsti žinutę';
       });
     }
+
+    // Atsiliepimų „Daugiau / Mažiau" — sutraukia ilgus tekstus
+    (function () {
+      function setup() {
+        document.querySelectorAll('.testimonial-card .testimonial-text').forEach(function (text) {
+          if (text.dataset.toggleReady) return;
+          text.classList.add('clamped');
+          if (text.scrollHeight - text.clientHeight > 4) {
+            text.dataset.toggleReady = '1';
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'testimonial-toggle';
+            btn.textContent = 'Daugiau';
+            btn.setAttribute('aria-expanded', 'false');
+            text.after(btn);
+            btn.addEventListener('click', function () {
+              var clamped = text.classList.toggle('clamped');
+              btn.textContent = clamped ? 'Daugiau' : 'Mažiau';
+              btn.setAttribute('aria-expanded', String(!clamped));
+            });
+          } else {
+            text.classList.remove('clamped');
+          }
+        });
+      }
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(setup); }
+      else { window.addEventListener('load', setup); }
+    })();
   </script>
 </body>
 </html>
