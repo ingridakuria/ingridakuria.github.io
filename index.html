@@ -391,7 +391,7 @@
     }
     .problema-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.72fr;
+      grid-template-columns: minmax(0, 820px) 1fr;
       gap: 0;
       align-items: stretch;
       max-width: none;
@@ -401,7 +401,6 @@
       padding: clamp(3.5rem, 5vw, 5rem) clamp(2.5rem, 3.5vw, 4rem) clamp(3.5rem, 5vw, 5rem) clamp(2rem, 5vw, 5rem);
       align-self: center;
       max-width: 760px;
-      margin-left: auto;
     }
     .problema-left h2 { color: var(--cream); }
     .problema-left h2 em { color: var(--coral); }
@@ -478,7 +477,7 @@
       margin: 0 auto 3.5rem;
     }
     .paslaugos-lead {
-      max-width: 660px;
+      max-width: none;
       color: var(--charcoal-light);
       margin-top: 1.3rem;
       font-size: 1.08rem;
@@ -557,10 +556,10 @@
     .process-wrap { max-width: 1360px; margin: 0 auto; }
     .process-list {
       list-style: none;
-      max-width: 1040px;
+      max-width: none;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.6rem 3rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem 3rem;
     }
     .process-step {
       display: flex;
@@ -1224,7 +1223,7 @@
       .paslaugos-header { flex-direction: column; align-items: flex-start; }
       .pricing-layout { grid-template-columns: 1fr; }
       .pricing-callouts { grid-template-columns: 1fr; }
-      .process-list { grid-template-columns: 1fr; }
+      .process-list { grid-template-columns: 1fr 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
@@ -1246,6 +1245,7 @@
       .burger { display: flex; z-index: 101; }
       .services-grid { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: 1fr; }
+      .process-list { grid-template-columns: 1fr; }
       .phone-mockup { width: 116px; right: 2px; bottom: -20px; padding: 11px 6px 8px; border-radius: 22px; }
       .phone-speaker { width: 32px; top: 5px; }
       .calendly-inline-widget { height: 1000px !important; }
@@ -1291,7 +1291,7 @@
   <section id="paslaugos">
     <div class="paslaugos-header fade-in">
       <p class="section-label">Paslaugos</p>
-      <h2>Tavo internetinė svetainė — <em>paprastai, greitai ir prieinamai!</em></h2>
+      <h2>Tavo internetinė svetainė — <em>deleguota</em>, ne atidėta.</h2>
       <p class="paslaugos-lead">Kuriu internetines svetaines moterims kūrėjoms visoje Lietuvoje — floristėms, fotografėms, keramikėms, rankdarbių meistrėms — individualiai ir be šablonų.</p>
       <p class="paslaugos-intro">Kaip atrodo procesas:</p>
     </div>
